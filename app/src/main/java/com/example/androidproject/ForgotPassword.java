@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
-public class SignUp extends AppCompatActivity {
+public class ForgotPassword extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,17 +17,10 @@ public class SignUp extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-
-        setContentView(R.layout.activity_sign_up);
-
-        //Drop-down list
-        Spinner dropdown = findViewById(R.id.questionList);
-        String[] items = new String[]{"Pytanie 1", "Pytanie 2", "Pytanie 3"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
+        setContentView(R.layout.activity_forgot_password);
     }
 
-    //Go to SignUp acitivity
+    //Go to MainAcitivity
     public void signIn(View view)
     {
         Intent intent = new Intent(this, MainActivity.class);
