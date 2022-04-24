@@ -177,6 +177,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_bold"
         android:text="Sign In"
+        android:onClick="signIn"
         android:textColor="@color/second_red"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"

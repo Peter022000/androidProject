@@ -29,4 +29,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SignUp.class);
         startActivity(intent);
     }
+
+    //Go to forgotPasswordAcitivity
+    public void forgotPassword(View view)
+    {
+        Intent intent = new Intent(this, ForgotPassword.class);
+        startActivity(intent);
+    }
 }
