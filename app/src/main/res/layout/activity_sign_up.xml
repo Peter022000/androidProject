@@ -19,10 +19,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.226"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordField" />
 
     <EditText
-        android:id="@+id/editTextTextPassword4"
+        android:id="@+id/passwordConfirmField"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/questionList" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/securityQuestionAnswer"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/passwordField"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -86,7 +86,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.178"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
+        app:layout_constraintTop_toBottomOf="@+id/securityQuestionAnswer" />
 
     <TextView
         android:id="@+id/textView2"
@@ -100,7 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.226"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <Spinner
         android:id="@+id/questionList"
@@ -156,7 +156,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword4" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordConfirmField" />
 
     <TextView
         android:id="@+id/textView6"
@@ -197,10 +197,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.161"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/login" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -227,7 +227,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/login"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginEnd="52dp"
