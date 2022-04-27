@@ -3,12 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/activity_main.xml" value="0.333786231884058" />
-        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/app_bar_nav_menu.xml" value="0.2558876811594203" />
-        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/content_nav_menu.xml" value="0.2558876811594203" />
-        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/fragment_gallery.xml" value="0.2558876811594203" />
-        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/fragment_home.xml" value="0.2558876811594203" />
-        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/fragment_slideshow.xml" value="0.2558876811594203" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/activity_forgot_password.xml" value="0.33" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/activity_reset_password.xml" value="0.33" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/activity_splash.xml" value="0.25" />
       </map>
     </option>
   </component>
