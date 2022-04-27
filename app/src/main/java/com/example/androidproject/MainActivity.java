@@ -24,14 +24,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_main);
-
-        Button logIn = (Button) findViewById(R.id.logIn);
-        logIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNewActivity();
-            }
-        });
     }
 
     public void openNewActivity(){
