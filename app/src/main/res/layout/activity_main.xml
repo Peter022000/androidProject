@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/nunito_semibold"
-        android:text="Sign In"
+        android:text="Sign Inn"
         android:textColor="@color/black_main"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -169,14 +169,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <Button
-        android:id="@+id/logIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Zaloguj się"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-  
 </androidx.constraintlayout.widget.ConstraintLayout>

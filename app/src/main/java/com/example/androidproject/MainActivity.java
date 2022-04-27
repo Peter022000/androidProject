@@ -10,9 +10,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import android.view.View;
-import android.widget.Button;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -24,21 +21,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_main);
-
-        Button logIn = (Button) findViewById(R.id.logIn);
-        logIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNewActivity();
-            }
-        });
     }
-
-    public void openNewActivity(){
-        Intent intent = new Intent(this, NavMenuActivity.class);
-        startActivity(intent);
-    }
-
 
     //Go to SignUp acitivity
     public void signUp(View view)
