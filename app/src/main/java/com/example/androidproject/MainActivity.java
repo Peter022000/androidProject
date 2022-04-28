@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         credentials.add(loginField.getText().toString());
         credentials.add(passwordField.getText().toString());
 
-        if(!DataValidator.ValidateFields(credentials))
+        if(!DataValidator.validateFields(credentials))
         {
             Toast.makeText(getApplicationContext(), "Some fields are empty!", Toast.LENGTH_SHORT).show();
         }
