@@ -2,6 +2,7 @@ package com.example.androidproject;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -16,14 +17,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME = "users";
 
-//    public static final String COLUMN_UID = "uid";
-//    public static final String COLUMN_LOGIN = "login";
-//    public static final String COLUMN_EMAIL = "email";
-//    public static final String COLUMN_PASSWORD = "password";
-//    public static final String COLUMN_SECURITY_QUESTION = "security_question";
-//    public static final String COLUMN_SECURITY_ANSWER = "security_answer";
-//    public static final String COLUMN_PROFILE_IMAGE = "profile_image_url";
-//    public static final String COLUMN_MONEY = "money";
+    public static final String COLUMN_UID = "uid";
+    public static final String COLUMN_LOGIN = "login";
+    public static final String COLUMN_EMAIL = "email";
+    public static final String COLUMN_PASSWORD = "password";
+    public static final String COLUMN_SECURITY_QUESTION = "security_question";
+    public static final String COLUMN_SECURITY_ANSWER = "security_answer";
+    public static final String COLUMN_PROFILE_IMAGE = "profile_image_url";
+    public static final String COLUMN_MONEY = "money";
 
 
     public DatabaseHelper(@Nullable Context context) {
@@ -79,5 +80,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Log.d("Created", "Created");
         }
 
+    }
+
+    public boolean checkUser(String login, String password) {
+        String[] columns = {
+                COLUMN_UID
+        };
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selection = COLUMN_LOGIN + " = ?" + " AND " + COLUMN_PASSWORD + " = ?";
+
+        String[] selectionArgs = {login, password};
+        Cursor cursor = db.query(TABLE_NAME,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        db.close();
+        if (cursorCount > 0) {
+            return true;
+        }
+        return false;
     }
 }
