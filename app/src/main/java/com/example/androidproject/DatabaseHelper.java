@@ -2,9 +2,12 @@ package com.example.androidproject;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -16,14 +19,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME = "users";
 
-//    public static final String COLUMN_UID = "uid";
-//    public static final String COLUMN_LOGIN = "login";
-//    public static final String COLUMN_EMAIL = "email";
-//    public static final String COLUMN_PASSWORD = "password";
-//    public static final String COLUMN_SECURITY_QUESTION = "security_question";
-//    public static final String COLUMN_SECURITY_ANSWER = "security_answer";
-//    public static final String COLUMN_PROFILE_IMAGE = "profile_image_url";
-//    public static final String COLUMN_MONEY = "money";
+    public static final String COLUMN_UID = "uid";
+    public static final String COLUMN_LOGIN = "login";
+    public static final String COLUMN_EMAIL = "email";
+    public static final String COLUMN_PASSWORD = "password";
+    public static final String COLUMN_SECURITY_QUESTION = "security_question";
+    public static final String COLUMN_SECURITY_ANSWER = "security_answer";
+    public static final String COLUMN_PROFILE_IMAGE = "profile_image_url";
+    public static final String COLUMN_MONEY = "money";
 
 
     public DatabaseHelper(@Nullable Context context) {
@@ -54,6 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    //Creates account
     public void createAccount(String login, String email, String password, String security_question, String security_answer, String profile_image_url, float money)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -71,13 +75,92 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(result==-1)
         {
             Toast.makeText(context, "Failed to create account.", Toast.LENGTH_SHORT).show();
-            Log.d("Failed", "Failed");
         }
         else
         {
             Toast.makeText(context, "Account created!", Toast.LENGTH_SHORT).show();
-            Log.d("Created", "Created");
+            Intent intent = new Intent(context, MainActivity.class);
+            context.startActivity(intent);
+
         }
 
+    }
+
+    //Check if user exists in DB, only for log in
+    public boolean checkUser(String login, String password) {
+        String[] columns = {
+                COLUMN_UID
+        };
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selection = COLUMN_LOGIN + " = ?" + " AND " + COLUMN_PASSWORD + " = ?";
+
+        String[] selectionArgs = {login, password};
+        Cursor cursor = db.query(TABLE_NAME,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        db.close();
+        if (cursorCount > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    //Check if user exists in DB
+    public boolean checkUser(String login) {
+        String[] columns = {
+                COLUMN_UID
+        };
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selection = COLUMN_LOGIN + " = ?";
+
+        String[] selectionArgs = {login};
+        Cursor cursor = db.query(TABLE_NAME,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        db.close();
+        if (cursorCount > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    //Check if email exists in DB
+    public boolean checkEmail(String email) {
+        String[] columns = {
+                COLUMN_UID
+        };
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selection = COLUMN_EMAIL + " = ?";
+
+        String[] selectionArgs = {email};
+        Cursor cursor = db.query(TABLE_NAME,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        db.close();
+        if (cursorCount > 0) {
+            return true;
+        }
+        return false;
     }
 }
