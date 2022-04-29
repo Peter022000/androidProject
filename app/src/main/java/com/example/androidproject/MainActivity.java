@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText loginField;
     private EditText passwordField;
-    private CheckBox checkBox;
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -38,14 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
         loginField = findViewById(R.id.loginField);
         passwordField = findViewById(R.id.passwordField);
-        checkBox = findViewById(R.id.checkBox);
 
         preferences = getSharedPreferences("UserCredentials", MODE_PRIVATE);
         editor = preferences.edit();
-        Log.i("Login:", preferences.getString("LOGIN_KEY",""));
-        Log.i("Password:", preferences.getString("PASSWORD_KEY",""));
+//        Log.i("Login:", preferences.getString("LOGIN_KEY",""));
+//        Log.i("Password:", preferences.getString("PASSWORD_KEY",""));
 
-        if (preferences.contains("LOGIN_KEY")) {
+        if (preferences.getString("KEEP_LOGGED_KEY","false").equals("true")) {
             Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
             startActivity(intent);
         } else {
@@ -71,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(intent);
             } else {
-                    Toast.makeText(getApplicationContext(), "Failed, no such user", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Credentials are wrong.", Toast.LENGTH_SHORT).show();
             }
                 //Here will be goto Drawer activity after successfully validation
                 //Intent intent = new Intent(this, Drawer.class);
