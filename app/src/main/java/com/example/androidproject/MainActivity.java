@@ -60,17 +60,19 @@ public class MainActivity extends AppCompatActivity {
         if (!DataValidator.validateFields(credentials)) {
             Toast.makeText(getApplicationContext(), "Some fields are empty!", Toast.LENGTH_SHORT).show();
         } else {
-            DatabaseHelper db = new DatabaseHelper(MainActivity.this);
-            if (db.checkUser(loginField.getText().toString(), passwordField.getText().toString())) {
-                Toast.makeText(getApplicationContext(), "Success find user", Toast.LENGTH_SHORT).show();
-                editor.putString("LOGIN_KEY", loginField.getText().toString());
-                editor.putString("PASSWORD_KEY", passwordField.getText().toString());
-                editor.commit();
-                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                startActivity(intent);
-            } else {
-                    Toast.makeText(getApplicationContext(), "Credentials are wrong.", Toast.LENGTH_SHORT).show();
-            }
+            Intent intent = new Intent(this, Drawer.class);
+            startActivity(intent);
+//            DatabaseHelper db = new DatabaseHelper(MainActivity.this);
+//            if (db.checkUser(loginField.getText().toString(), passwordField.getText().toString())) {
+//                Toast.makeText(getApplicationContext(), "Success find user", Toast.LENGTH_SHORT).show();
+//                editor.putString("LOGIN_KEY", loginField.getText().toString());
+//                editor.putString("PASSWORD_KEY", passwordField.getText().toString());
+//                editor.commit();
+//                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+//                startActivity(intent);
+//            } else {
+//                    Toast.makeText(getApplicationContext(), "Credentials are wrong.", Toast.LENGTH_SHORT).show();
+//            }
                 //Here will be goto Drawer activity after successfully validation
                 //Intent intent = new Intent(this, Drawer.class);
                 //startActivity(intent);
