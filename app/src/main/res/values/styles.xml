@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  MAIN STYLES  -->
+    <style name="LogoLabelStyle">
+        <item name="android:textColor">@color/main_grey</item>
+        <item name="android:fontFamily">@font/nunito_bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="MainLabelStyle">
+        <item name="android:textColor">@color/black_main</item>
+        <item name="android:fontFamily">@font/nunito_semibold</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="SecondLabelStyle">
+        <item name="android:textColor">@color/main_red</item>
+        <item name="android:fontFamily">@font/nunito_semibold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="MainButtonStyle">
+        <item name="android:fontFamily">@font/nunito_bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:backgroundTint">@color/main_red</item>
+    </style>
+
+    <style name="GreyLabelStyle">
+        <item name="android:fontFamily">@font/nunito_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/main_grey</item>
+    </style>
+
+    <style name="SecondRedLabelStyle">
+        <item name="android:fontFamily">@font/nunito_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/second_red</item>
+    </style>
+
+
+    <!--  PROFILE STYLES  -->
+    <style name="ProfileTextViewStyle">
+        <item name="android:textColor">@color/black_main</item>
+        <item name="android:background">?attr/editTextBackground</item>
+        <item name="android:fontFamily">@font/nunito_medium</item>
+        <item name="android:ems">12</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="ProfileTextViewSecondStyle">
+        <item name="android:textColor">@color/black_main</item>
+        <item name="android:background">?attr/editTextBackground</item>
+        <item name="android:fontFamily">@font/nunito_medium</item>
+        <item name="android:ems">6</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="ProfileButtonStyle">
+        <item name="android:backgroundTint">@color/main_red</item>
+        <item name="android:fontFamily">@font/nunito_medium</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ProfileLabelStyle">
+        <item name="android:textColor">@color/main_red</item>
+        <item name="android:fontFamily">@font/nunito_bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+</resources>

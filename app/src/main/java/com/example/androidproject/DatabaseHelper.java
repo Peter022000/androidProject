@@ -12,6 +12,10 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
@@ -163,4 +167,63 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return false;
     }
+
+    public List<String> getUserCredentials(String login) {
+        List<String> userDataList = new LinkedList<String>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String userData = null;
+
+        Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE login = ?", new String[]{login}); //+" WHERE login = ?", new String[]{login}
+        if (cursor.moveToFirst()) {
+            do {
+                userData = new String();
+                userDataList.add(userData);
+            } while (cursor.moveToNext());
+        }
+        return userDataList;
+    }
+
+    public ArrayList<String> returnUserData(String login){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_NAME, new String[] { COLUMN_LOGIN,
+                        COLUMN_EMAIL, COLUMN_PASSWORD}, COLUMN_LOGIN + "=?",
+                new String[] { login }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        ArrayList<String> userData = new ArrayList<>();
+
+        userData.add(cursor.getString(0));
+        userData.add(cursor.getString(1));
+        userData.add(cursor.getString(2));
+        return userData;
+    }
+
+//    public List<String> getUserCredentials(String login) {
+//        List<String> userDataList = new LinkedList<String>();
+//
+//        // 1. build the query
+//        String query = "SELECT  * FROM " + TABLE_NAME + " WHERE login = ";
+//
+//        // 2. get reference to writable DB
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor cursor = db.rawQuery(query, null);
+//
+//        // 3. go over each row, build book and add it to list
+//        String userData = null;
+//        if (cursor.moveToFirst()) {
+//            do {
+//                userData = new String();
+//                userDataList.add(userData);
+//            } while (cursor.moveToNext());
+//        }
+//
+//        Log.d("UserData:", userDataList.toString());
+//
+//        // return books
+//        return userDataList;
+//    }
+
 }
