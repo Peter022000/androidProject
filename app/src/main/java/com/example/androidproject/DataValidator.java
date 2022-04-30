@@ -10,9 +10,9 @@ import java.util.regex.Pattern;
 
 public class DataValidator {
 
-    static public boolean validateFields(List<String> credentials)
+    static public boolean validateFields(List<String> fieldsToCheck)
     {
-        for (String x : credentials) {
+        for (String x : fieldsToCheck) {
             if(TextUtils.isEmpty(x))
             {
                 return false;
@@ -67,13 +67,12 @@ public class DataValidator {
         Matcher emailMatcher = emailPattern.matcher(email);
         if(emailMatcher.find())
         {
-            Toast.makeText(context, "Email good", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Email good", Toast.LENGTH_SHORT).show();
             return true;
         }
         else
         {
             Toast.makeText(context, "Email is invalid.", Toast.LENGTH_SHORT).show();
-
             return false;
         }
     }

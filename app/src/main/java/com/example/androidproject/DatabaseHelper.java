@@ -201,6 +201,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return userData;
     }
 
+    public ArrayList<String> returnSecurityQuestion(String email){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_NAME, new String[] { COLUMN_SECURITY_QUESTION,
+                        COLUMN_SECURITY_ANSWER}, COLUMN_EMAIL + "=?",
+                new String[] { email }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        ArrayList<String> userData = new ArrayList<>();
+
+        userData.add(cursor.getString(0));
+        userData.add(cursor.getString(1));
+        return userData;
+    }
+
+    boolean updateData(String newPassword, String email)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_PASSWORD, newPassword);
+        long result = db.update(TABLE_NAME, cv, "email=?", new String[]{email});
+        
+        if(result == -1)
+        {
+            Toast.makeText(context, "Something went wrong.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else
+        {
+            Toast.makeText(context, "Password changed successfully", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+    }
+
 //    public List<String> getUserCredentials(String login) {
 //        List<String> userDataList = new LinkedList<String>();
 //
