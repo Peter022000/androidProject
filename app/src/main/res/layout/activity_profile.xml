@@ -9,37 +9,37 @@
 
     <Button
         android:id="@+id/changeLoginButton"
+        style="@style/ProfileButtonStyle"
         android:layout_width="126dp"
         android:layout_height="41dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="Change"
-        style="@style/ProfileButtonStyle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toEndOf="@+id/changeEmail2"
         app:layout_constraintTop_toBottomOf="@+id/changeEmailButton" />
 
     <Button
         android:id="@+id/changeEmailButton"
+        style="@style/ProfileButtonStyle"
         android:layout_width="126dp"
         android:layout_height="41dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="Change"
-        style="@style/ProfileButtonStyle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toEndOf="@+id/changeEmail"
         app:layout_constraintTop_toBottomOf="@+id/changePasswordButton" />
 
     <Button
         android:id="@+id/changePasswordButton"
+        style="@style/ProfileButtonStyle"
         android:layout_width="126dp"
         android:layout_height="41dp"
         android:layout_marginTop="40dp"
         android:text="Change"
-        style="@style/ProfileButtonStyle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toEndOf="@+id/changePassword"
         app:layout_constraintTop_toBottomOf="@+id/emailField" />
 
