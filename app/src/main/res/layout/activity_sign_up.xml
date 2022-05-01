@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/bg4"
     tools:context=".SignUp">
 
     <TextView
@@ -27,6 +27,8 @@
         android:hint="*********"
         android:inputType="textPassword"
         android:textSize="18sp"
+        android:textColorHint="@color/white_second"
+        android:textColor="@color/white_second"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +52,8 @@
         android:layout_height="40dp"
         android:ems="10"
         android:hint="security question answer"
+        android:textColorHint="@color/white_second"
+        android:textColor="@color/white_second"
         android:inputType="text"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,6 +69,8 @@
         android:hint="*********"
         android:inputType="textPassword"
         android:textSize="18sp"
+        android:textColorHint="@color/white_second"
+        android:textColor="@color/white_second"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,8 +105,8 @@
         android:layout_width="299dp"
         android:layout_height="38dp"
         android:background="@android:drawable/btn_dropdown"
-        android:backgroundTint="@color/main_red"
-        android:popupBackground="@color/second_red"
+        android:backgroundTint="@color/bg_opacity3"
+        android:popupBackground="@color/white_second"
         android:spinnerMode="dropdown"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -190,6 +196,8 @@
         android:hint="email"
         android:inputType="text"
         android:textSize="18sp"
+        android:textColorHint="@color/white_second"
+        android:textColor="@color/white_second"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
@@ -216,6 +224,8 @@
         android:hint="login"
         android:inputType="textPersonName"
         android:textSize="18sp"
+        android:textColorHint="@color/white_second"
+        android:textColor="@color/white_second"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -228,7 +238,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo3" />
 
     <TextView
         android:id="@+id/textView"
@@ -236,8 +246,9 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_bold"
         android:text="VirtualMerchant"
-        android:textColor="@color/main_grey"
+        android:textColor="@color/white_second"
         android:textSize="15sp"
+        android:layout_marginTop="-10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
