@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/bg4"
     tools:context=".MainActivity">
 
     <TextView
@@ -68,7 +68,6 @@
         style="@style/GreyLabelStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:onClick="forgotPassword"
         android:text="Forgot password?"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,6 +105,8 @@
         android:layout_height="40dp"
         android:ems="10"
         android:hint="password"
+        android:textColorHint="@color/white_second"
+        android:textColor="@color/white_second"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.531"
@@ -119,6 +120,8 @@
         android:layout_marginEnd="52dp"
         android:ems="10"
         android:hint="login"
+        android:textColorHint="@color/white_second"
+        android:textColor="@color/white_second"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -128,7 +131,7 @@
         style="@style/SecondLabelStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.186"
@@ -144,8 +147,8 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048"
-        app:srcCompat="@drawable/logo" />
+        app:layout_constraintVertical_bias="0.092"
+        app:srcCompat="@drawable/logo3" />
 
     <TextView
         android:id="@+id/textView"
