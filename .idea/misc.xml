@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/activity_about_us.xml" value="0.17401215805471124" />
+        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/activity_dashboard.xml" value="0.17831813576494426" />
+        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/activity_drawer.xml" value="0.33152173913043476" />
+        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/activity_equipment.xml" value="0.23369565217391305" />
+        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/activity_forgot_password.xml" value="0.36666666666666664" />
+        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/activity_main.xml" value="0.33152173913043476" />
+        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/activity_profile.xml" value="0.33152173913043476" />
+        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/activity_shop.xml" value="0.3645833333333333" />
+        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/activity_sign_up.xml" value="0.23369565217391305" />
+        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/main_nav_drawer.xml" value="0.33" />
+        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/main_toolbar.xml" value="0.32382246376811596" />
         <entry key="..\:/androidProject/app/src/main/res/layout/activity_forgot_password.xml" value="0.33" />
         <entry key="..\:/androidProject/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/androidProject/app/src/main/res/layout/activity_profile.xml" value="0.25" />
