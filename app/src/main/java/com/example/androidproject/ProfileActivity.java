@@ -12,7 +12,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView loginField;
     TextView emailField;
     DatabaseHelper db;
+    CheckBox keepMeLogged;
 //    ArrayList<String> login, email, password, security_question, security_answer, profile_image_url, money;
 
     @Override
@@ -43,8 +46,8 @@ public class ProfileActivity extends AppCompatActivity {
         preferences = getSharedPreferences("UserCredentials", MODE_PRIVATE);
         editor = preferences.edit();
         button = findViewById(R.id.logoutButton);
-        loggedOut = findViewById(R.id.loggedOut);
-        loggedIn = findViewById(R.id.loggedIn);
+//        loggedOut = findViewById(R.id.loggedOut);
+//        loggedIn = findViewById(R.id.loggedIn);
         loginField = findViewById(R.id.loginField);
         emailField = findViewById(R.id.emailField);
 
@@ -67,27 +70,56 @@ public class ProfileActivity extends AppCompatActivity {
 
         emailField.setText(userData.get(1));
 
+        CheckBox keepMeLogged = ( CheckBox ) findViewById( R.id.keepMeLogged );
 
-        //Sets system to keep user logged
-        loggedIn.setOnClickListener(new View.OnClickListener() {
+        if(preferences.getString("KEEP_LOGGED_KEY","false").equals("true"))
+        {
+            keepMeLogged.setChecked(true);
+        }
+
+        keepMeLogged.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
             @Override
-            public void onClick(View v) {
-                editor.putString("KEEP_LOGGED_KEY", "true");
-                editor.commit();
-                Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_SHORT).show();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                if ( isChecked )
+                {
+                    editor.putString("KEEP_LOGGED_KEY", "true");
+                    editor.commit();
+                    Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    editor.clear();
+                    editor.putString("KEEP_LOGGED_KEY", "false");
+                    editor.commit();
+                    Toast.makeText(getApplicationContext(), "Saved 2!", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
-        //Clears all preferences
-        loggedOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editor.clear();
-                editor.putString("KEEP_LOGGED_KEY", "false");
-                editor.commit();
-                Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_SHORT).show();
-            }
-        });
+
+//        //Sets system to keep user logged
+//        loggedIn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                editor.putString("KEEP_LOGGED_KEY", "true");
+//                editor.commit();
+//                Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        //Clears all preferences
+//        loggedOut.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                editor.clear();
+//                editor.putString("KEEP_LOGGED_KEY", "false");
+//                editor.commit();
+//                Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 
         //Logout method

@@ -40,12 +40,12 @@
 
     <!--  PROFILE STYLES  -->
     <style name="ProfileTextViewStyle">
-        <item name="android:textColor">@color/main_red</item>
+        <item name="android:textColor">@color/black_main</item>
         <item name="android:background">?attr/editTextBackground</item>
         <item name="android:fontFamily">@font/nunito_medium</item>
         <item name="android:ems">12</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:layout_marginLeft">20sp</item>
+        <item name="android:layout_marginLeft">30sp</item>
         <item name="android:layout_marginRight">20sp</item>
     </style>
 
@@ -57,24 +57,50 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="ProfileTextViewThirdStyle">
+        <item name="android:textColor">@color/main_red</item>
+        <item name="android:fontFamily">@font/nunito_medium</item>
+        <item name="android:ems">12</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginLeft">30sp</item>
+        <item name="android:layout_marginRight">20sp</item>
+    </style>
+
     <style name="ProfileButtonStyle">
         <item name="android:backgroundTint">@color/main_red</item>
         <item name="android:fontFamily">@font/nunito_medium</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:layout_marginRight">20sp</item>
+        <item name="android:layout_width">200sp</item>
+        <item name="android:layout_height">40sp</item>
+        <item name="android:layout_marginTop">4sp</item>
+        <item name="android:gravity">left</item>
+        <item name="android:layout_marginLeft">30sp</item>
+
+<!--        <item name="android:layout_marginRight">20sp</item>-->
     </style>
 
     <style name="ProfileButtonSecondStyle">
         <item name="android:backgroundTint">@color/main_red</item>
         <item name="android:fontFamily">@font/nunito_medium</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:paddingLeft">10sp</item>
+        <item name="android:paddingRight">10sp</item>
+        <item name="android:layout_marginLeft">20sp</item>
+        <item name="android:layout_marginRight">20sp</item>
+    </style>
+
+    <style name="ProfileButtonThirdStyle">
+        <item name="android:backgroundTint">@color/main_red</item>
+        <item name="android:fontFamily">@font/nunito_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingLeft">10sp</item>
+        <item name="android:paddingRight">10sp</item>
     </style>
 
     <style name="ProfileLabelStyle">
         <item name="android:textColor">@color/main_red</item>
         <item name="android:fontFamily">@font/nunito_bold</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:layout_marginTop">10sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:layout_marginLeft">20sp</item>
         <item name="android:ems">12</item>
         <item name="android:gravity">left</item>
