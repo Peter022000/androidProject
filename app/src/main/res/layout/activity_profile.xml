@@ -1,16 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".ProfileActivity">
+    tools:context=".ProfileActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:background="@color/bg_opacity">
+
+        <ImageView
+            android:id="@+id/avatarImage"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10sp"
+            android:background="@color/main_red"
+            android:padding="3sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/avatar" />
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="?attr/editTextBackground"
+            android:backgroundTint="@android:color/white"
+            android:ems="14"
+            android:fontFamily="@font/nunito_bold"
+            android:inputType="textPersonName"
+            android:text="PROFILE DETAILS"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.237" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/credentialsView"
+        style="@style/ProfileLabelStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Credentials"
+        android:textSize="25sp"
+        android:textColor="@color/black_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailField" />
 
     <TextView
         android:id="@+id/loginView"
         style="@style/ProfileLabelStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/loginField"
@@ -23,7 +80,7 @@
     <TextView
         android:id="@+id/loginField"
         style="@style/ProfileTextViewStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,81 +89,11 @@
         app:layout_constraintTop_toBottomOf="@+id/line"
         app:layout_constraintVertical_bias="0.113" />
 
-    <TextView
-        android:id="@+id/changePassword"
-        style="@style/ProfileTextViewSecondStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.221"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/securityView" />
-
-    <TextView
-        android:id="@+id/changeEmail2"
-        style="@style/ProfileTextViewSecondStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.221"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeEmail" />
-
-    <Button
-        android:id="@+id/loggedOut"
-        style="@style/ProfileButtonStyle"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="yes"
-        app:layout_constraintStart_toEndOf="@+id/checkbox"
-        app:layout_constraintTop_toBottomOf="@+id/changeEmail2" />
-
-    <TextView
-        android:id="@+id/changeEmail"
-        style="@style/ProfileTextViewSecondStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.221"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changePassword" />
-
-    <TextView
-        android:id="@+id/securityView"
-        style="@style/ProfileLabelStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Security"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailField" />
-
-    <Button
-        android:id="@+id/changeEmailButton"
-        style="@style/ProfileButtonStyle"
-        android:layout_width="126dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="16dp"
-        android:text="Change"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
-        app:layout_constraintStart_toEndOf="@+id/changeEmail"
-        app:layout_constraintTop_toBottomOf="@+id/changePasswordButton" />
 
     <TextView
         android:id="@+id/emailView"
         style="@style/ProfileLabelStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Email"
@@ -115,59 +102,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginField" />
 
-    <Button
-        android:id="@+id/changeLoginButton"
-        style="@style/ProfileButtonStyle"
-        android:layout_width="126dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="16dp"
-        android:text="Change"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
-        app:layout_constraintStart_toEndOf="@+id/changeEmail2"
-        app:layout_constraintTop_toBottomOf="@+id/changeEmailButton" />
-
-    <Button
-        android:id="@+id/changePasswordButton"
-        style="@style/ProfileButtonStyle"
-        android:layout_width="126dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="4dp"
-        android:text="Change"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
-        app:layout_constraintStart_toEndOf="@+id/changePassword"
-        app:layout_constraintTop_toBottomOf="@+id/securityView" />
-
-    <TextView
-        android:id="@+id/checkbox"
-        style="@style/ProfileTextViewSecondStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Keep me logged:"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.217"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeEmail2" />
-
-    <Button
-        android:id="@+id/loggedIn"
-        style="@style/ProfileButtonStyle"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="8dp"
-        android:text="no"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/checkbox"
-        app:layout_constraintTop_toBottomOf="@+id/changeEmail2" />
-
     <TextView
         android:id="@+id/emailField"
         style="@style/ProfileTextViewStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
@@ -176,48 +114,175 @@
         app:layout_constraintTop_toBottomOf="@+id/emailView"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/securityView"
+        style="@style/ProfileLabelStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Security"
+        android:textSize="25sp"
+        android:textColor="@color/black_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailField" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+        android:id="@+id/changePassword"
+        style="@style/ProfileTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Password"
+            android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.221"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/securityView" />
+
+        <Button
+            android:id="@+id/changePasswordButton"
+            style="@style/ProfileButtonStyle"
+            android:layout_width="126dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="4dp"
+            android:text="Change"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.192"
+            app:layout_constraintStart_toEndOf="@+id/changePassword"
+            app:layout_constraintTop_toBottomOf="@+id/securityView" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/changeEmail"
+            style="@style/ProfileTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Email"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.221"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityView" />
+
+        <Button
+            android:id="@+id/changeEmailButton"
+            style="@style/ProfileButtonStyle"
+            android:layout_width="126dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="4dp"
+            android:text="Change"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.192"
+            app:layout_constraintStart_toEndOf="@+id/changePassword"
+            app:layout_constraintTop_toBottomOf="@+id/securityView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/changeLogin"
+            style="@style/ProfileTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Login"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.221"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityView" />
+
+        <Button
+            android:id="@+id/changeLoginButton"
+            style="@style/ProfileButtonStyle"
+            android:layout_width="126dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="4dp"
+            android:text="Change"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.192"
+            app:layout_constraintStart_toEndOf="@+id/changePassword"
+            app:layout_constraintTop_toBottomOf="@+id/securityView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/checkbox"
+            style="@style/ProfileTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Keep me logged:"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.217"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/changeEmail2" />
+
+        <Button
+            android:id="@+id/loggedOut"
+            style="@style/ProfileButtonStyle"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:text="no"
+            app:layout_constraintStart_toEndOf="@+id/checkbox"
+            app:layout_constraintTop_toBottomOf="@+id/changeEmail2" />
+
+        <Button
+            android:id="@+id/loggedIn"
+            style="@style/ProfileButtonStyle"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:text="yes"
+            android:layout_weight="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/checkbox"
+            app:layout_constraintTop_toBottomOf="@+id/changeEmail2" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical" >
     <Button
         android:id="@+id/logoutButton"
-        style="@style/ProfileButtonStyle"
-        android:layout_width="411dp"
+        style="@style/ProfileButtonSecondStyle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:text="Log out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="-6sp"
+        app:cornerRadius="0dp"/>
+    </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/line"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?attr/editTextBackground"
-        android:ems="14"
-        android:fontFamily="@font/nunito_bold"
-        android:inputType="textPersonName"
-        android:text="PROFILE DETAILS"
-        android:textAlignment="center"
-        android:textColor="@color/main_red"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.237" />
-
-    <ImageView
-        android:id="@+id/avatarImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/main_red"
-        android:padding="5sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/avatar" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
