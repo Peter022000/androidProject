@@ -91,6 +91,8 @@ public class SignUp extends AppCompatActivity {
                                     if(!db.checkEmail(credentials.get(1)))
                                     {
                                         db.createAccount(loginField.getText().toString(), emailField.getText().toString(), passwordField.getText().toString(), securityQuestion, securityQuestionAnswerField.getText().toString(), "1", 1000);
+                                        Intent i = new Intent(SignUp.this, MainActivity.class);
+                                        startActivity(i);
                                     }
                                     else
                                     {

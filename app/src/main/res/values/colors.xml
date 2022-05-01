@@ -13,4 +13,5 @@
     <color name="main_red">#ec2127</color>
     <color name="second_red">#f15b60</color>
     <color name="black_main">#323739</color>
+    <color name="bg_opacity">#99000000</color>
 </resources>

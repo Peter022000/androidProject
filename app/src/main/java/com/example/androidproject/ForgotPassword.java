@@ -7,7 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ForgotPassword extends AppCompatActivity {
 
@@ -24,6 +29,31 @@ public class ForgotPassword extends AppCompatActivity {
         emailField = findViewById(R.id.emailField);
     }
 
+    public void gotoReset(View view)
+    {
+        List<String> fields = new ArrayList<String>();
+        fields.add(emailField.getText().toString());
+        if(!DataValidator.validateFields(fields))
+        {
+            Toast.makeText(getApplicationContext(), "Empty field!", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            if(DataValidator.validateEmail(emailField.getText().toString(), getApplicationContext()))
+            {
+                DatabaseHelper db = new DatabaseHelper(ForgotPassword.this);
+                if(db.checkEmail(emailField.getText().toString()))
+                {
+                    resetPassword(emailField.getText().toString());
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Email not found.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
     //Go to MainAcitivity
     public void signIn(View view)
     {
@@ -32,9 +62,10 @@ public class ForgotPassword extends AppCompatActivity {
     }
 
     //Go to resetPassword
-    public void resetPassword(View view)
+    public void resetPassword(String emailField)
     {
-        Intent intent = new Intent(this, ResetPassword.class);
-        startActivity(intent);
+        Intent email = new Intent(this, ResetPassword.class);
+        email.putExtra("Email",emailField);
+        startActivity(email);
     }
 }
