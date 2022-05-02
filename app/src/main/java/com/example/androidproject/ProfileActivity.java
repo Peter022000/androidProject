@@ -91,7 +91,6 @@ public class ProfileActivity extends AppCompatActivity {
                     editor.clear();
                     editor.putString("KEEP_LOGGED_KEY", "false");
                     editor.commit();
-                    Toast.makeText(getApplicationContext(), "Saved 2!", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -108,8 +107,9 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        String avatarNumber = preferences.getString("USER_AVATAR_KEY", "default");
-
+        //Sets profile avatar
+        String avatar = db.returnAvatarNumber(emailField.getText().toString());
+        String avatarNumber = preferences.getString("USER_AVATAR_KEY", avatar);
         setAvatar(avatarNumber);
 
         changeAvatarButton.setOnClickListener(new View.OnClickListener() {

@@ -28,6 +28,7 @@ public class AvatarChooser extends AppCompatActivity {
     ImageView avatar8;
     ImageView avatar9;
     String newAvatarNumber;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class AvatarChooser extends AppCompatActivity {
         avatar7 = findViewById(R.id.avatar7);
         avatar8 = findViewById(R.id.avatar8);
         avatar9 = findViewById(R.id.avatar9);
+        db = new DatabaseHelper(AvatarChooser.this);
 
         preferences = getSharedPreferences("UserCredentials", MODE_PRIVATE);
         editor = preferences.edit();
@@ -180,46 +182,55 @@ public class AvatarChooser extends AppCompatActivity {
             case "1":
                 editor.putString("USER_AVATAR_KEY", newAvatarNumber);
                 editor.commit();
+                db.updateAvatar(newAvatarNumber,preferences.getString("LOGIN_KEY","default"));
                 gotoProfile();
                 break;
             case "2":
                 editor.putString("USER_AVATAR_KEY", newAvatarNumber);
                 editor.commit();
+                db.updateAvatar(newAvatarNumber,preferences.getString("LOGIN_KEY","default"));
                 gotoProfile();
                 break;
             case "3":
                 editor.putString("USER_AVATAR_KEY", newAvatarNumber);
                 editor.commit();
+                db.updateAvatar(newAvatarNumber,preferences.getString("LOGIN_KEY","default"));
                 gotoProfile();
                 break;
             case "4":
                 editor.putString("USER_AVATAR_KEY", newAvatarNumber);
                 editor.commit();
+                db.updateAvatar(newAvatarNumber,preferences.getString("LOGIN_KEY","default"));
                 gotoProfile();
                 break;
             case "5":
                 editor.putString("USER_AVATAR_KEY", newAvatarNumber);
                 editor.commit();
+                db.updateAvatar(newAvatarNumber,preferences.getString("LOGIN_KEY","default"));
                 gotoProfile();
                 break;
             case "6":
                 editor.putString("USER_AVATAR_KEY", newAvatarNumber);
                 editor.commit();
+                db.updateAvatar(newAvatarNumber,preferences.getString("LOGIN_KEY","default"));
                 gotoProfile();
                 break;
             case "7":
                 editor.putString("USER_AVATAR_KEY", newAvatarNumber);
                 editor.commit();
+                db.updateAvatar(newAvatarNumber,preferences.getString("LOGIN_KEY","default"));
                 gotoProfile();
                 break;
             case "8":
                 editor.putString("USER_AVATAR_KEY", newAvatarNumber);
                 editor.commit();
+                db.updateAvatar(newAvatarNumber,preferences.getString("LOGIN_KEY","default"));
                 gotoProfile();
                 break;
             default:
                 editor.putString("USER_AVATAR_KEY", newAvatarNumber);
                 editor.commit();
+                db.updateAvatar(newAvatarNumber,preferences.getString("LOGIN_KEY","default"));
                 gotoProfile();
                 break;
         }
