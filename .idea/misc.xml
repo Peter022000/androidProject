@@ -12,6 +12,7 @@
         <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/activity_profile.xml" value="0.33152173913043476" />
         <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/activity_shop.xml" value="0.3645833333333333" />
         <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/activity_sign_up.xml" value="0.23369565217391305" />
+        <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/equipment_item.xml" value="0.5" />
         <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/main_nav_drawer.xml" value="0.33" />
         <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/main_toolbar.xml" value="0.32382246376811596" />
         <entry key="..\:/androidProject/app/src/main/res/layout/activity_forgot_password.xml" value="0.33" />
@@ -24,7 +25,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
