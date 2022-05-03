@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg4"
+    tools:context=".ProfileActivity"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:layout_marginTop="100sp"
+        app:srcCompat="@drawable/logo3" />
+
+    <TextView
+        android:id="@+id/textView15"
+        style="@style/LogoLabelStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10sp"
+        android:text="VirtualMerchant"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/titleView"
+        style="@style/MainLabelStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Reset password"
+        android:textSize="30sp"
+        android:layout_marginLeft="30sp"/>
+
+    <TextView
+        android:id="@+id/newData"
+        style="@style/SecondLabelStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="New password"
+        android:layout_marginLeft="30sp"/>
+
+    <EditText
+        android:id="@+id/newDataField"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/black"
+        android:hint=""
+        android:inputType="textPassword"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp" />
+
+    <TextView
+        android:id="@+id/confirmNewData"
+        style="@style/SecondLabelStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Confirm password"
+        android:layout_marginLeft="30sp"/>
+
+    <EditText
+        android:id="@+id/confirmNewDataField"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/black"
+        android:hint=""
+        android:inputType="textPassword"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp" />
+
+    <Button
+        android:id="@+id/button"
+        style="@style/MainButtonStyle"
+        android:layout_gravity="center"
+        android:layout_width="250sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="20sp"
+        android:text="Change" />
+
+
+</LinearLayout>
