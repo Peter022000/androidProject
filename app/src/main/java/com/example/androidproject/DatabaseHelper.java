@@ -239,6 +239,66 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    //Updates users password
+    boolean updateDataByLogin(String newPassword, String login)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_PASSWORD, newPassword);
+        long result = db.update(TABLE_NAME, cv, "login=?", new String[]{login});
+
+        if(result == -1)
+        {
+            Toast.makeText(context, "Something went wrong.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else
+        {
+            Toast.makeText(context, "Password changed successfully", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+    }
+
+    //Updates users email
+    boolean updateEmail(String newEmail, String login)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_EMAIL, newEmail);
+        long result = db.update(TABLE_NAME, cv, "login=?", new String[]{login});
+
+        if(result == -1)
+        {
+            Toast.makeText(context, "Something went wrong.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else
+        {
+            Toast.makeText(context, "Email changed successfully", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+    }
+
+    //Updates users password
+    boolean updateLogin(String newLogin, String login)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_LOGIN, newLogin);
+        long result = db.update(TABLE_NAME, cv, "login=?", new String[]{login});
+
+        if(result == -1)
+        {
+            Toast.makeText(context, "Something went wrong.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else
+        {
+            Toast.makeText(context, "Login changed successfully", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+    }
+
     //Returns users avatarNumber
     public String returnAvatarNumber(String email){
         SQLiteDatabase db = this.getReadableDatabase();

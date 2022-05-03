@@ -36,6 +36,9 @@ public class ProfileActivity extends AppCompatActivity {
     CheckBox keepMeLogged;
     ImageView avatarImage;
     Button changeAvatarButton;
+    Button changeLoginButton;
+    Button changeEmailButton;
+    Button changePasswordButton;
 //    ArrayList<String> login, email, password, security_question, security_answer, profile_image_url, money;
 
     @Override
@@ -55,6 +58,9 @@ public class ProfileActivity extends AppCompatActivity {
         emailField = findViewById(R.id.emailField);
         avatarImage = findViewById(R.id.avatarImage);
         changeAvatarButton = findViewById(R.id.changeAvatarButton);
+        changeLoginButton = findViewById(R.id.changeLoginButton);
+        changeEmailButton = findViewById(R.id.changeEmailButton);
+        changePasswordButton = findViewById(R.id.changePasswordButton);
 
         //Sets login field
         loginField.setText(preferences.getString("LOGIN_KEY", ""));
@@ -118,6 +124,34 @@ public class ProfileActivity extends AppCompatActivity {
                 gotoAvatarChooser(avatarNumber);
             }
         });
+
+        changeEmailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString("CHANGE_KEY", "email");
+                editor.commit();
+                gotoProfileSecurity();
+            }
+        });
+
+        changePasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString("CHANGE_KEY", "password");
+                editor.commit();
+                gotoProfileSecurity();
+            }
+        });
+
+        changeLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString("CHANGE_KEY", "login");
+                editor.commit();
+                gotoProfileSecurity();
+            }
+        });
+
     }
 
     //Sets user avatar
@@ -161,6 +195,13 @@ public class ProfileActivity extends AppCompatActivity {
         editor.putString("USER_AVATAR_KEY", avatarNumber);
         editor.commit();
         Intent intent = new Intent(this, AvatarChooser.class);
+        startActivity(intent);
+    }
+
+    //Go to avatarChooser
+    public void gotoProfileSecurity()
+    {
+        Intent intent = new Intent(this, ProfileSecurity.class);
         startActivity(intent);
     }
 

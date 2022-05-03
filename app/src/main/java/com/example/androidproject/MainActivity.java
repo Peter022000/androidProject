@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             DatabaseHelper db = new DatabaseHelper(MainActivity.this);
             if (db.checkUser(loginField.getText().toString(), passwordField.getText().toString())) {
-                Toast.makeText(getApplicationContext(), "Success find user", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Success find user", Toast.LENGTH_SHORT).show();
                 editor.putString("LOGIN_KEY", loginField.getText().toString());
                 editor.putString("PASSWORD_KEY", passwordField.getText().toString());
                 editor.commit();
