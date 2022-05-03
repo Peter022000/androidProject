@@ -2,18 +2,20 @@ package com.example.androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class EquipmentItemPreview extends AppCompatActivity {
+public class ShopItemPreview extends AppCompatActivity {
 
     private int iid;
     private int uid;
+    private int sid;
     private int userMoney;
 
     private String name;
@@ -27,6 +29,7 @@ public class EquipmentItemPreview extends AppCompatActivity {
     private TextView item_value;
     private TextView item_weight;
     private TextView item_amount;
+    private TextView money;
     MyDatabaseHelper myDatabaseHelper;
 
     @Override
@@ -35,7 +38,7 @@ public class EquipmentItemPreview extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_equipment_item_preview);
+        setContentView(R.layout.activity_shop_item_preview);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -46,6 +49,7 @@ public class EquipmentItemPreview extends AppCompatActivity {
             weight = extras.getInt("weight");
             amount = extras.getInt("amount");
             uid = extras.getInt("uid");
+            sid = extras.getInt("sid");
             userMoney = extras.getInt("userMoney");
         }
 
@@ -54,28 +58,48 @@ public class EquipmentItemPreview extends AppCompatActivity {
         item_value = findViewById(R.id.item_value);
         item_weight = findViewById(R.id.item_weight);
         item_amount = findViewById(R.id.item_amount);
+        money = findViewById(R.id.money);
 
         item_name.setText(this.name);
         item_description.setText(this.description);
         item_value.setText(String.valueOf(this.value));
         item_weight.setText(String.valueOf(this.weight));
         item_amount.setText(String.valueOf(this.amount));
+        money.setText(String.valueOf(this.userMoney));
     }
 
-    public void deleteItemFromEquipment(View view)
+    public void buyItem(View view)
     {
-        amount--;
-        myDatabaseHelper = new MyDatabaseHelper(EquipmentItemPreview.this);
-        myDatabaseHelper.deleteItemFromEquipment(uid, iid, amount);
-        item_amount.setText(String.valueOf(amount));
-        if(this.amount == 0) {
-            Drawer.redirectActivity(this, Equipment.class, this.uid, this.userMoney);
+        if(value < userMoney)
+        {
+            this.amount--;
+            this.userMoney -= value;
+            myDatabaseHelper = new MyDatabaseHelper(ShopItemPreview.this);
+            Log.d("aaaabbbbbbaaaa" , sid + "  " + iid + "  " + amount);
+            myDatabaseHelper.deleteItemFromShop(sid, iid, amount);
+            item_amount.setText(String.valueOf(amount));
+            money.setText(String.valueOf(userMoney));
+            myDatabaseHelper.addItemToEquipment(this.uid,iid);
+            //myDatabaseHelper.changeUserMoney
+            if(this.amount == 0) {
+                Drawer.redirectActivity(this, Shop.class, this.uid, this.userMoney);
+            }
+            Toast.makeText(this, this.name+" has been purchased", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(this, "Not enough money", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void goBackToEquipment(View view)
-    {
-        Drawer.redirectActivity(this, Equipment.class, this.uid, this.userMoney);
+    public void goBackToShop(View view) {
+        //Drawer.redirectActivity(this, Shop.class, this.uid, this.userMoney);
+        Intent intent = new Intent(this,Shop.class);
+        intent.putExtra("uid", uid);
+        intent.putExtra("sid", sid);
+        intent.putExtra("userMoney", userMoney);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     @Override

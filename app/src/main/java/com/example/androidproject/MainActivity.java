@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Some fields are empty!", Toast.LENGTH_SHORT).show();
         } else {
             Intent intent = new Intent(this, Drawer.class);
+            intent.putExtra("uid",1);
+            intent.putExtra("userMoney",1000);
             startActivity(intent);
 //            DatabaseHelper db = new DatabaseHelper(MainActivity.this);
 //            if (db.checkUser(loginField.getText().toString(), passwordField.getText().toString())) {

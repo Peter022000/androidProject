@@ -7,16 +7,31 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 public class Drawer extends AppCompatActivity {
     //Initialize variable
     DrawerLayout drawerLayout;
 
+    private int uid;
+    private int userMoney;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_drawer);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            uid = extras.getInt("uid");
+            userMoney = extras.getInt("userMoney");
+        }
 
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -48,19 +63,20 @@ public class Drawer extends AppCompatActivity {
     }
 
     public void ClickHome(View view){
-        recreate();
+        redirectActivity(this, Drawer.class, this.uid, this.userMoney);
+        //recreate();
     }
 
     public void ClickEquipment(View view){
-        redirectActivity(this, Equipment.class);
+        redirectActivity(this, Equipment.class, this.uid, this.userMoney);
     }
 
     public void ClickShop(View view){
-        redirectActivity(this, Shop.class);
+        redirectActivity(this, Shop.class, this.uid, this.userMoney);
     }
 
     public void ClickAboutUs(View view){
-        redirectActivity(this, AboutUs.class);
+        redirectActivity(this, AboutUs.class, this.uid, this.userMoney);
     }
 
     public void ClickLogout(View view){
@@ -68,8 +84,10 @@ public class Drawer extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public static void redirectActivity(Activity activity, Class aClass) {
+    public static void redirectActivity(Activity activity, Class aClass, int uid, int userMoney) {
         Intent intent = new Intent(activity,aClass);
+        intent.putExtra("uid", uid);
+        intent.putExtra("userMoney", userMoney);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         activity.startActivity(intent);
     }
@@ -78,5 +96,9 @@ public class Drawer extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         closeDrawer(drawerLayout);
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

@@ -13,17 +13,30 @@
         android:orientation="vertical">
 
         <include
-            layout="@layout/main_toolbar"/>
+            layout="@layout/main_toolbar_for_shop"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Shops"
-            android:textSize="50sp"
+            android:id="@+id/shopName"
+            android:layout_margin = "20dp"
+            android:textSize="30sp"
             android:textStyle="bold"
-            android:gravity="center"
-            />
+            android:text="aaaa"
+            android:gravity="center_vertical|center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+    </LinearLayout>
 
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewShop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

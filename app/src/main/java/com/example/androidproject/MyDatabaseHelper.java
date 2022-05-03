@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -116,6 +117,38 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    void addItemToShop(int sid, int iid, int amount){
+
+        String query = "SELECT * FROM " + TABLE_NAME3 + " WHERE " + COLUMN_IID + " = " + iid + " AND " + COLUMN_SID + " = " + sid + " ;";
+        SQLiteDatabase rdb = this.getReadableDatabase();
+        SQLiteDatabase wdb = this.getWritableDatabase();
+
+        Cursor cursor = null;
+
+        if(rdb != null){
+            cursor = rdb.rawQuery(query,null);
+            if(cursor.getCount() == 0){
+                ContentValues cv = new ContentValues();
+
+                cv.put(COLUMN_SID, sid);
+                cv.put(COLUMN_IID, iid);
+                cv.put(COLUMN_AMOUNT, amount);
+
+                wdb.insert(TABLE_NAME3, null, cv);
+            }
+            else
+            {
+                ContentValues cv = new ContentValues();
+                cursor.moveToNext();
+                int old = cursor.getInt(2);
+                cv.put(COLUMN_AMOUNT, old + amount);
+
+                wdb.update(TABLE_NAME3, cv,COLUMN_SID + " = ? AND " + COLUMN_IID + " = ?" , new String[]{String.valueOf(sid), String.valueOf(iid)});
+            }
+        }
+    }
+
+
     void deleteItemFromEquipment(int uid, int iid, int amount){
 
         SQLiteDatabase wdb = this.getWritableDatabase();
@@ -129,8 +162,22 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         wdb.update(TABLE_NAME2, cv,COLUMN_UID + " = ? AND " + COLUMN_IID + " = ?" , new String[]{String.valueOf(uid), String.valueOf(iid)});
     }
 
+    void deleteItemFromShop(int sid, int iid, int amount){
 
-    Cursor readData(int uid){
+        SQLiteDatabase wdb = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_SID, sid);
+        cv.put(COLUMN_IID, iid);
+        cv.put(COLUMN_AMOUNT, amount);
+
+        wdb.update(TABLE_NAME3, cv,COLUMN_SID + " = ? AND " + COLUMN_IID + " = ?" , new String[]{String.valueOf(sid), String.valueOf(iid)});
+    }
+
+
+
+    Cursor readDataEquipment(int uid){
         String query = "SELECT it.*, eq.amount FROM " + TABLE_NAME2 + " AS eq " +
                 " JOIN " + TABLE_NAME1+ " AS it ON eq.iid = it.iid "+
                 " WHERE eq.uid = " + uid + " AND eq.amount > 0 ";
@@ -145,4 +192,21 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         return cursor;
     }
+
+    Cursor readDataShop(int sid){
+        String query = "SELECT it.*, sh.amount FROM " + TABLE_NAME3 + " AS sh " +
+                " JOIN " + TABLE_NAME1+ " AS it ON sh.iid = it.iid "+
+                " WHERE sh.sid = " + sid + " AND sh.amount > 0 ";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+
+        if(db != null){
+            cursor = db.rawQuery(query,null);
+        }
+
+        return cursor;
+    }
+
 }
