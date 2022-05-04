@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Equipment extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
-    MyDatabaseHelper myDatabaseHelper;
+    DatabaseHelper DatabaseHelper;
 
     ArrayList<Item> items;
     EquipmentAdapter equipmentAdapter;
@@ -41,7 +41,7 @@ public class Equipment extends AppCompatActivity {
             userMoney = extras.getInt("userMoney");
         }
 
-        myDatabaseHelper = new MyDatabaseHelper(Equipment.this);
+        DatabaseHelper = new DatabaseHelper(Equipment.this);
         items = new ArrayList<Item>();
 
 //        myDatabaseHelper.addItem("item1", "d1", 5,3);
@@ -88,6 +88,10 @@ public class Equipment extends AppCompatActivity {
         Drawer.redirectActivity(this, Equipment.class, this.uid, this.userMoney);
     }
 
+    public void ClickUserProfile(View view){
+        Drawer.redirectActivity(this, ProfileActivity.class, this.uid, this.userMoney);
+    }
+
     public void ClickShop(View view) {
         Drawer.redirectActivity(this, Shop.class, this.uid, this.userMoney);
     }
@@ -109,7 +113,7 @@ public class Equipment extends AppCompatActivity {
     }
 
     void storeItems() {
-        Cursor cursor = myDatabaseHelper.readDataEquipment(uid);
+        Cursor cursor = DatabaseHelper.readDataEquipment(uid);
 
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "No items", Toast.LENGTH_SHORT).show();

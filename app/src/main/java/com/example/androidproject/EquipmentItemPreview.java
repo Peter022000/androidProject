@@ -27,7 +27,7 @@ public class EquipmentItemPreview extends AppCompatActivity {
     private TextView item_value;
     private TextView item_weight;
     private TextView item_amount;
-    MyDatabaseHelper myDatabaseHelper;
+    DatabaseHelper DatabaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +65,8 @@ public class EquipmentItemPreview extends AppCompatActivity {
     public void deleteItemFromEquipment(View view)
     {
         amount--;
-        myDatabaseHelper = new MyDatabaseHelper(EquipmentItemPreview.this);
-        myDatabaseHelper.deleteItemFromEquipment(uid, iid, amount);
+        DatabaseHelper = new DatabaseHelper(EquipmentItemPreview.this);
+        DatabaseHelper.deleteItemFromEquipment(uid, iid, amount);
         item_amount.setText(String.valueOf(amount));
         if(this.amount == 0) {
             Drawer.redirectActivity(this, Equipment.class, this.uid, this.userMoney);

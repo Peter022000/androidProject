@@ -28,7 +28,7 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
 
     private TextView shopName;
 
-    MyDatabaseHelper myDatabaseHelper;
+    DatabaseHelper DatabaseHelper;
 
     ArrayList<Item> items;
     ShopAdapter shopAdapter;
@@ -51,7 +51,7 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
 
         shopName = findViewById(R.id.shopName);
 
-        myDatabaseHelper = new MyDatabaseHelper(Shop.this);
+        DatabaseHelper = new DatabaseHelper(Shop.this);
         items = new ArrayList<Item>();
 
         recyclerView = findViewById(R.id.recyclerViewShop);
@@ -110,6 +110,10 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         Drawer.redirectActivity(this,AboutUs.class, this.uid, this.userMoney);
     }
 
+    public void ClickUserProfile(View view){
+        Drawer.redirectActivity(this, ProfileActivity.class, this.uid, this.userMoney);
+    }
+
     public void ClickLogout(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -147,7 +151,7 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     }
 
     void storeItems() {
-        Cursor cursor = myDatabaseHelper.readDataShop(sid);
+        Cursor cursor = DatabaseHelper.readDataShop(sid);
 
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "No items", Toast.LENGTH_SHORT).show();

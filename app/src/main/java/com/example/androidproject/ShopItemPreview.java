@@ -30,7 +30,7 @@ public class ShopItemPreview extends AppCompatActivity {
     private TextView item_weight;
     private TextView item_amount;
     private TextView money;
-    MyDatabaseHelper myDatabaseHelper;
+    DatabaseHelper DatabaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,12 +74,12 @@ public class ShopItemPreview extends AppCompatActivity {
         {
             this.amount--;
             this.userMoney -= value;
-            myDatabaseHelper = new MyDatabaseHelper(ShopItemPreview.this);
-            Log.d("aaaabbbbbbaaaa" , sid + "  " + iid + "  " + amount);
-            myDatabaseHelper.deleteItemFromShop(sid, iid, amount);
+            DatabaseHelper = new DatabaseHelper(ShopItemPreview.this);
+            DatabaseHelper.deleteItemFromShop(sid, iid, amount);
             item_amount.setText(String.valueOf(amount));
             money.setText(String.valueOf(userMoney));
-            myDatabaseHelper.addItemToEquipment(this.uid,iid);
+            DatabaseHelper.addItemToEquipment(this.uid,iid);
+            DatabaseHelper.updateMoney(this.uid, this.userMoney);
             //myDatabaseHelper.changeUserMoney
             if(this.amount == 0) {
                 Drawer.redirectActivity(this, Shop.class, this.uid, this.userMoney);

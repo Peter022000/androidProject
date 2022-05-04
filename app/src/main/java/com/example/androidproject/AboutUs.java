@@ -57,6 +57,10 @@ public class AboutUs extends AppCompatActivity {
         Drawer.redirectActivity(this, AboutUs.class, this.uid, this.userMoney);
     }
 
+    public void ClickUserProfile(View view){
+        Drawer.redirectActivity(this, ProfileActivity.class, this.uid, this.userMoney);
+    }
+
     public void ClickLogout(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
