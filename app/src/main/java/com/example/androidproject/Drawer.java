@@ -5,7 +5,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +30,14 @@ public class Drawer extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_drawer);
 
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean firstStart = prefs.getBoolean("firstStart", true);
+
+        if (firstStart) {
+            loadData();
+        }
+
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             uid = extras.getInt("uid");
@@ -36,6 +47,23 @@ public class Drawer extends AppCompatActivity {
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
     }
+
+    private void loadData() {
+        MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(Drawer.this);
+        myDatabaseHelper.addItem("item1", "d1", 5,3);
+        myDatabaseHelper.addItem("item2", "d2", 5,3);
+        myDatabaseHelper.addItem("item3", "d3", 5,3);
+
+        myDatabaseHelper.addItemToShop(0,3,6);
+        myDatabaseHelper.addItemToShop(1,1,15);
+        myDatabaseHelper.addItemToShop(2,2,30);
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
+    }
+
 
     public void ClickMenu(View view){
         //Open drawer
