@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SignUp extends AppCompatActivity {
@@ -23,6 +25,9 @@ public class SignUp extends AppCompatActivity {
     EditText passwordConfirmField;
     EditText passwordField;
     Button button;
+
+    String securityQuestion;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,24 +47,61 @@ public class SignUp extends AppCompatActivity {
         button = findViewById(R.id.button);
 
         //Drop-down list
-        Spinner dropdown = findViewById(R.id.questionList);
-        String[] items = new String[]{
-                "What is the name of your favorite pet?",
+        List<String> questions = Arrays.asList("What is the name of your favorite pet?",
                 "What primary school did you attend?",
                 "In what town or city was your first full time job?",
                 "What is your partner's mother's maiden name?",
-                "What is your partner's mother's maiden name?",
-                "What is the middle name of your oldest child?",
                 "What is the middle name of your oldest child?",
                 "What is your favourite movie?",
                 "What is your memorable date?",
-                "What are the last three digits of your number?",
-                "What is the name of your favorite pet?"
-        };
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
+                "What are the last three digits of your number?");
+        final Spinner spinner = findViewById(R.id.questionList);
+        ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, questions);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
-        String securityQuestion = dropdown.getSelectedItem().toString();
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch(position)
+                {
+                    case 0:
+                       securityQuestion = "What is the name of your favorite pet?";
+                       break;
+                    case 1:
+                        securityQuestion = "What primary school did you attend?";
+                        break;
+                    case 2:
+                        securityQuestion = "In what town or city was your first full time job?";
+                        break;
+                    case 3:
+                        securityQuestion = "What is your partner's mother's maiden name?";
+                        break;
+                    case 4:
+                        securityQuestion = "What is the middle name of your oldest child?";
+                        break;
+                    case 5:
+                        securityQuestion = "What is your favourite movie?";
+                        break;
+                    case 6:
+                        securityQuestion = "What is your memorable date?";
+                        break;
+                    case 7:
+                        securityQuestion = "What are the last three digits of your number?";
+                        break;
+                    default:
+                        securityQuestion = "What is the name of your favorite pet?";
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
