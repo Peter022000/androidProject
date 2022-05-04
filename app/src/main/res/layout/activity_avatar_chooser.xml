@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg4"
+    tools:context=".ProfileActivity"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="?attr/editTextBackground"
+        android:backgroundTint="@android:color/white"
+        android:ems="14"
+        android:fontFamily="@font/nunito_bold"
+        android:inputType="textPersonName"
+        android:text="Choose your avatar"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/avatar1"
+            style="@style/ImageViewStyle"
+            app:srcCompat="@drawable/av1" />
+
+        <ImageView
+            android:id="@+id/avatar2"
+            style="@style/ImageViewStyle"
+            app:srcCompat="@drawable/av2" />
+
+        <ImageView
+            android:id="@+id/avatar3"
+            style="@style/ImageViewStyle"
+            app:srcCompat="@drawable/av3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/avatar4"
+            style="@style/ImageViewStyle"
+            app:srcCompat="@drawable/av4" />
+
+        <ImageView
+            android:id="@+id/avatar5"
+            style="@style/ImageViewStyle"
+            app:srcCompat="@drawable/av5" />
+
+        <ImageView
+            android:id="@+id/avatar6"
+            style="@style/ImageViewStyle"
+            app:srcCompat="@drawable/av6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/avatar7"
+            style="@style/ImageViewStyle"
+            app:srcCompat="@drawable/av7" />
+
+        <ImageView
+            android:id="@+id/avatar8"
+            style="@style/ImageViewStyle"
+            app:srcCompat="@drawable/av8" />
+
+        <ImageView
+            android:id="@+id/avatar9"
+            style="@style/ImageViewStyle"
+            app:srcCompat="@drawable/avatar" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/userAvatarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10sp"
+            android:background="?attr/editTextBackground"
+            android:backgroundTint="@android:color/white"
+            android:ems="14"
+            android:fontFamily="@font/nunito_semibold"
+            android:inputType="textPersonName"
+            android:text="Your avatar"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/userAvatar"
+            style="@style/ImageViewStyle"
+            android:layout_marginLeft="0dp"
+            app:srcCompat="@drawable/avatar" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical" >
+    <Button
+        android:id="@+id/setAvatarButton"
+        style="@style/AvatarButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="0"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="-6sp"
+        app:cornerRadius="0dp"
+        android:text="Set avatar" />
+    </LinearLayout>
+
+</LinearLayout>

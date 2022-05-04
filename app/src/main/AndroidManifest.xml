@@ -28,6 +28,12 @@
             android:name=".Drawer"
             android:exported="false" />
         <activity
+            android:name=".ProfileSecurity"
+            android:exported="false" />
+        <activity
+            android:name=".AvatarChooser"
+            android:exported="false" />
+        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
