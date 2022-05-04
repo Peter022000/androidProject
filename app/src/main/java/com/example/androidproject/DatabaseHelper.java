@@ -579,6 +579,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         wdb.update(TABLE_NAME, cv,COLUMN_UID + " = ?", new String[]{String.valueOf(uid)});
     }
-
-
 }

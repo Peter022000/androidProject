@@ -44,23 +44,6 @@ public class Equipment extends AppCompatActivity {
         DatabaseHelper = new DatabaseHelper(Equipment.this);
         items = new ArrayList<Item>();
 
-//        myDatabaseHelper.addItem("item1", "d1", 5,3);
-//        myDatabaseHelper.addItem("item2", "d2", 5,3);
-//        myDatabaseHelper.addItem("item3", "d3", 5,3);
-
-//        myDatabaseHelper.addItemToShop(0,3,6);
-
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,3);
-//        myDatabaseHelper.addItemToEquipment(1,3);
-//        myDatabaseHelper.addItemToEquipment(1,3);
-
         recyclerView = findViewById(R.id.recyclerViewEquipment);
 
         storeItems();
