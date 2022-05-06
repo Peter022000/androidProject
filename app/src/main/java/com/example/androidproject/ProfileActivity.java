@@ -115,6 +115,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 editor.clear();
                 editor.commit();
+
                 Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -160,12 +161,6 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         //------------------------------------------------------------------------------------------
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            uid = extras.getInt("uid");
-            userMoney = extras.getInt("userMoney");
-        }
 
         drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -233,27 +228,31 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void ClickHome(View view) {
-        Drawer.redirectActivity(this, Drawer.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this, Drawer.class);
     }
 
     public void ClickEquipment(View view){
-        Drawer.redirectActivity(this,Equipment.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this,Equipment.class);
     }
 
     public void ClickShop(View view){
-        Drawer.redirectActivity(this, Shop.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this, Shop.class);
     }
 
 
     public void ClickAboutUs(View view){
-        Drawer.redirectActivity(this, AboutUs.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this, AboutUs.class);
     }
 
     public void ClickUserProfile(View view){
-        Drawer.redirectActivity(this, ProfileActivity.class, this.uid, this.userMoney);
+        //Drawer.redirectActivity(this, ProfileActivity.class);
+        recreate();
     }
 
     public void ClickLogout(View view){
+        editor.clear();
+        editor.commit();
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

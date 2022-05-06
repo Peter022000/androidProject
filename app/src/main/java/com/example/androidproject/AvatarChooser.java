@@ -1,6 +1,7 @@
 package com.example.androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class AvatarChooser extends AppCompatActivity {
+    DrawerLayout drawerLayout;
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -52,6 +54,8 @@ public class AvatarChooser extends AppCompatActivity {
         avatar8 = findViewById(R.id.avatar8);
         avatar9 = findViewById(R.id.avatar9);
         db = new DatabaseHelper(AvatarChooser.this);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
 
         preferences = getSharedPreferences("UserCredentials", MODE_PRIVATE);
         editor = preferences.edit();
@@ -240,7 +244,54 @@ public class AvatarChooser extends AppCompatActivity {
     public void gotoProfile()
     {
         Toast.makeText(getApplicationContext(), "Avatar changed", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Drawer.redirectActivity(this, ProfileActivity.class);
+    }
+
+    //----------------------------------------------------------------------------------------------
+    public  void ClickMenu(View view) {
+        Drawer.openDrawer(drawerLayout);
+    }
+
+    public  void ClickLogo(View view){
+        Drawer.closeDrawer(drawerLayout);
+    }
+
+    public void ClickHome(View view) {
+        Drawer.redirectActivity(this, Drawer.class);
+    }
+
+    public void ClickEquipment(View view){
+        Drawer.redirectActivity(this,Equipment.class);
+    }
+
+    public void ClickShop(View view){
+        Drawer.redirectActivity(this, Shop.class);
+    }
+
+    public void ClickAboutUs(View view){
+        Drawer.redirectActivity(this, AboutUs.class);
+    }
+
+    public void ClickUserProfile(View view){
+        Drawer.redirectActivity(this, ProfileActivity.class);
+    }
+
+    public void ClickLogout(View view){
+        editor.clear();
+        editor.commit();
+
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Drawer.closeDrawer(drawerLayout);
+    }
+
+    @Override
+    public void onBackPressed() {
+    }
+
 }

@@ -98,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
                 editor.putString("LOGIN_KEY", loginField.getText().toString());
                 editor.putString("PASSWORD_KEY", passwordField.getText().toString());
+                editor.putInt("UID_KEY", IDAndMoney.get(0));
+                editor.putInt("MONEY_KEY", IDAndMoney.get(1));
                 editor.commit();
 //                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
 //                startActivity(intent);

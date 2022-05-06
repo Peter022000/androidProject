@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -12,8 +13,8 @@ import android.view.WindowManager;
 public class AboutUs extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
-    private int uid;
-    private int userMoney;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +24,8 @@ public class AboutUs extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_about_us);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            uid = extras.getInt("uid");
-            userMoney = extras.getInt("userMoney");
-        }
+        preferences = getSharedPreferences("UserCredentials", MODE_PRIVATE);
+        editor = preferences.edit();
 
         drawerLayout = findViewById(R.id.drawer_layout);
     }
@@ -41,27 +39,30 @@ public class AboutUs extends AppCompatActivity {
     }
 
     public void ClickHome(View view) {
-        Drawer.redirectActivity(this, Drawer.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this, Drawer.class);
     }
 
     public void ClickEquipment(View view){
-        Drawer.redirectActivity(this,Equipment.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this,Equipment.class);
     }
 
     public void ClickShop(View view){
-        Drawer.redirectActivity(this, Shop.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this, Shop.class);
     }
 
-
     public void ClickAboutUs(View view){
-        Drawer.redirectActivity(this, AboutUs.class, this.uid, this.userMoney);
+        //Drawer.redirectActivity(this, AboutUs.class);
+        recreate();
     }
 
     public void ClickUserProfile(View view){
-        Drawer.redirectActivity(this, ProfileActivity.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this, ProfileActivity.class);
     }
 
     public void ClickLogout(View view){
+        editor.clear();
+        editor.commit();
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
