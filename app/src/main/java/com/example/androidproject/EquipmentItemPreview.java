@@ -1,7 +1,10 @@
 package com.example.androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class EquipmentItemPreview extends AppCompatActivity {
+    DrawerLayout drawerLayout;
 
     private int iid;
     private int uid;
@@ -27,7 +31,10 @@ public class EquipmentItemPreview extends AppCompatActivity {
     private TextView item_value;
     private TextView item_weight;
     private TextView item_amount;
-    MyDatabaseHelper myDatabaseHelper;
+    DatabaseHelper DatabaseHelper;
+
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,9 @@ public class EquipmentItemPreview extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_equipment_item_preview);
 
+        preferences = getSharedPreferences("UserCredentials", MODE_PRIVATE);
+        editor = preferences.edit();
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             iid = extras.getInt("iid");
@@ -45,9 +55,11 @@ public class EquipmentItemPreview extends AppCompatActivity {
             value = extras.getInt("value");
             weight = extras.getInt("weight");
             amount = extras.getInt("amount");
-            uid = extras.getInt("uid");
-            userMoney = extras.getInt("userMoney");
         }
+
+        uid = preferences.getInt("UID_KEY",-1);
+        userMoney = preferences.getInt("MONEY_KEY",-1);
+
 
         item_name = findViewById(R.id.item_name);
         item_description = findViewById(R.id.item_description);
@@ -60,22 +72,66 @@ public class EquipmentItemPreview extends AppCompatActivity {
         item_value.setText(String.valueOf(this.value));
         item_weight.setText(String.valueOf(this.weight));
         item_amount.setText(String.valueOf(this.amount));
+
+        drawerLayout = findViewById(R.id.drawer_layout);
     }
 
     public void deleteItemFromEquipment(View view)
     {
         amount--;
-        myDatabaseHelper = new MyDatabaseHelper(EquipmentItemPreview.this);
-        myDatabaseHelper.deleteItemFromEquipment(uid, iid, amount);
+        DatabaseHelper = new DatabaseHelper(EquipmentItemPreview.this);
+        DatabaseHelper.deleteItemFromEquipment(uid, iid, amount);
         item_amount.setText(String.valueOf(amount));
         if(this.amount == 0) {
-            Drawer.redirectActivity(this, Equipment.class, this.uid, this.userMoney);
+            Drawer.redirectActivity(this, Equipment.class);
         }
     }
 
     public void goBackToEquipment(View view)
     {
-        Drawer.redirectActivity(this, Equipment.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this, Equipment.class);
+    }
+
+    public  void ClickMenu(View view) {
+        Drawer.openDrawer(drawerLayout);
+    }
+
+    public  void ClickLogo(View view){
+        Drawer.closeDrawer(drawerLayout);
+    }
+
+    public void ClickHome(View view) {
+        Drawer.redirectActivity(this, Drawer.class);
+    }
+
+    public void ClickEquipment(View view){
+        Drawer.redirectActivity(this,Equipment.class);
+    }
+
+    public void ClickShop(View view){
+        Drawer.redirectActivity(this, Shop.class);
+    }
+
+    public void ClickAboutUs(View view){
+        Drawer.redirectActivity(this, AboutUs.class);
+    }
+
+    public void ClickUserProfile(View view){
+        Drawer.redirectActivity(this, ProfileActivity.class);
+    }
+
+    public void ClickLogout(View view){
+        editor.clear();
+        editor.commit();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Drawer.closeDrawer(drawerLayout);
     }
 
     @Override

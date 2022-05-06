@@ -28,7 +28,6 @@ public class SignUp extends AppCompatActivity {
 
     String securityQuestion;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

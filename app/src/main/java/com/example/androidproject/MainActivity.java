@@ -38,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
         loginField = findViewById(R.id.loginField);
         passwordField = findViewById(R.id.passwordField);
 
+        //Load data at first aplication start
+        SharedPreferences prefs = getSharedPreferences("prefsfirstStart", MODE_PRIVATE);
+        boolean firstStart = prefs.getBoolean("firstStart", true);
+        if (firstStart) {
+            loadData();
+        }
+
+
         preferences = getSharedPreferences("UserCredentials", MODE_PRIVATE);
         editor = preferences.edit();
 //        Log.i("Login:", preferences.getString("LOGIN_KEY",""));
@@ -49,6 +57,23 @@ public class MainActivity extends AppCompatActivity {
         } else {
         }
     }
+
+    private void loadData() {
+        DatabaseHelper DatabaseHelper = new DatabaseHelper(MainActivity.this);
+        DatabaseHelper.addItem("item1", "d1", 5,3);
+        DatabaseHelper.addItem("item2", "d2", 5,3);
+        DatabaseHelper.addItem("item3", "d3", 5,3);
+
+        DatabaseHelper.addItemToShop(0,3,6);
+        DatabaseHelper.addItemToShop(1,1,15);
+        DatabaseHelper.addItemToShop(2,2,30);
+
+        SharedPreferences prefs = getSharedPreferences("prefsfirstStart", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
+    }
+
 
     //Go to SignUp acitivity
     public void signIn(View view) {
@@ -63,15 +88,25 @@ public class MainActivity extends AppCompatActivity {
             DatabaseHelper db = new DatabaseHelper(MainActivity.this);
             if (db.checkUser(loginField.getText().toString(), passwordField.getText().toString())) {
                 //Toast.makeText(getApplicationContext(), "Success find user", Toast.LENGTH_SHORT).show();
+
+                ArrayList<Integer> IDAndMoney = db.returnIDAndMoney(loginField.getText().toString());
+
+                Intent intent = new Intent(this, Drawer.class);
+                intent.putExtra("uid",IDAndMoney.get(0));
+                intent.putExtra("userMoney",IDAndMoney.get(1));
+                startActivity(intent);
+
                 editor.putString("LOGIN_KEY", loginField.getText().toString());
                 editor.putString("PASSWORD_KEY", passwordField.getText().toString());
+                editor.putInt("UID_KEY", IDAndMoney.get(0));
+                editor.putInt("MONEY_KEY", IDAndMoney.get(1));
                 editor.commit();
-                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+//                startActivity(intent);
             } else {
                     Toast.makeText(getApplicationContext(), "Credentials are wrong.", Toast.LENGTH_SHORT).show();
             }
-                //Here will be goto Drawer activity after successfully validation
+            //Here will be goto Drawer activity after successfully validation
                 //Intent intent = new Intent(this, Drawer.class);
                 //startActivity(intent);
         }

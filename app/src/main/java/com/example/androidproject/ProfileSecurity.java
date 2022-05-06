@@ -1,6 +1,7 @@
 package com.example.androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,6 +32,8 @@ public class ProfileSecurity extends AppCompatActivity {
     TextView confirmNewData;
     DatabaseHelper db;
 
+    DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,8 @@ public class ProfileSecurity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_profile_security);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
 
         button = findViewById(R.id.button);
         titleView = findViewById(R.id.titleView);
@@ -167,6 +172,54 @@ public class ProfileSecurity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+
+    public  void ClickMenu(View view) {
+        Drawer.openDrawer(drawerLayout);
+    }
+
+    public  void ClickLogo(View view){
+        Drawer.closeDrawer(drawerLayout);
+    }
+
+    public void ClickHome(View view) {
+        Drawer.redirectActivity(this, Drawer.class);
+    }
+
+    public void ClickEquipment(View view){
+        Drawer.redirectActivity(this,Equipment.class);
+    }
+
+    public void ClickShop(View view){
+        Drawer.redirectActivity(this, Shop.class);
+    }
+
+
+    public void ClickAboutUs(View view){
+        Drawer.redirectActivity(this, AboutUs.class);
+    }
+
+    public void ClickUserProfile(View view){
+        Drawer.redirectActivity(this, ProfileActivity.class);
+    }
+
+    public void ClickLogout(View view){
+        editor.clear();
+        editor.commit();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Drawer.closeDrawer(drawerLayout);
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

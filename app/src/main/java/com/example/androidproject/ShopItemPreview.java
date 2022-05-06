@@ -1,8 +1,10 @@
 package com.example.androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ShopItemPreview extends AppCompatActivity {
+
+    DrawerLayout drawerLayout;
+
 
     private int iid;
     private int uid;
@@ -30,7 +35,10 @@ public class ShopItemPreview extends AppCompatActivity {
     private TextView item_weight;
     private TextView item_amount;
     private TextView money;
-    MyDatabaseHelper myDatabaseHelper;
+    DatabaseHelper DatabaseHelper;
+
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,12 @@ public class ShopItemPreview extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_shop_item_preview);
 
+        preferences = getSharedPreferences("UserCredentials", MODE_PRIVATE);
+        editor = preferences.edit();
+
+        uid = preferences.getInt("UID_KEY",-1);
+        userMoney = preferences.getInt("MONEY_KEY",-1);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             iid = extras.getInt("iid");
@@ -48,9 +62,7 @@ public class ShopItemPreview extends AppCompatActivity {
             value = extras.getInt("value");
             weight = extras.getInt("weight");
             amount = extras.getInt("amount");
-            uid = extras.getInt("uid");
             sid = extras.getInt("sid");
-            userMoney = extras.getInt("userMoney");
         }
 
         item_name = findViewById(R.id.item_name);
@@ -66,6 +78,8 @@ public class ShopItemPreview extends AppCompatActivity {
         item_weight.setText(String.valueOf(this.weight));
         item_amount.setText(String.valueOf(this.amount));
         money.setText(String.valueOf(this.userMoney));
+
+        drawerLayout = findViewById(R.id.drawer_layout);
     }
 
     public void buyItem(View view)
@@ -74,15 +88,19 @@ public class ShopItemPreview extends AppCompatActivity {
         {
             this.amount--;
             this.userMoney -= value;
-            myDatabaseHelper = new MyDatabaseHelper(ShopItemPreview.this);
-            Log.d("aaaabbbbbbaaaa" , sid + "  " + iid + "  " + amount);
-            myDatabaseHelper.deleteItemFromShop(sid, iid, amount);
+
+            editor.putInt("MONEY_KEY", this.userMoney);
+            editor.commit();
+
+            DatabaseHelper = new DatabaseHelper(ShopItemPreview.this);
+            DatabaseHelper.deleteItemFromShop(sid, iid, amount);
             item_amount.setText(String.valueOf(amount));
             money.setText(String.valueOf(userMoney));
-            myDatabaseHelper.addItemToEquipment(this.uid,iid);
+            DatabaseHelper.addItemToEquipment(this.uid,iid);
+            DatabaseHelper.updateMoney(this.uid, this.userMoney);
             //myDatabaseHelper.changeUserMoney
             if(this.amount == 0) {
-                Drawer.redirectActivity(this, Shop.class, this.uid, this.userMoney);
+                Drawer.redirectActivity(this, Shop.class);
             }
             Toast.makeText(this, this.name+" has been purchased", Toast.LENGTH_SHORT).show();
         }
@@ -95,14 +113,53 @@ public class ShopItemPreview extends AppCompatActivity {
     public void goBackToShop(View view) {
         //Drawer.redirectActivity(this, Shop.class, this.uid, this.userMoney);
         Intent intent = new Intent(this,Shop.class);
-        intent.putExtra("uid", uid);
         intent.putExtra("sid", sid);
-        intent.putExtra("userMoney", userMoney);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
     @Override
     public void onBackPressed() {
+    }
+
+    public  void ClickMenu(View view) {
+        Drawer.openDrawer(drawerLayout);
+    }
+
+    public  void ClickLogo(View view){
+        Drawer.closeDrawer(drawerLayout);
+    }
+
+    public void ClickHome(View view) {
+        Drawer.redirectActivity(this, Drawer.class);
+    }
+
+    public void ClickEquipment(View view){
+        Drawer.redirectActivity(this,Equipment.class);
+    }
+
+    public void ClickShop(View view){
+        Drawer.redirectActivity(this, Shop.class);
+    }
+
+    public void ClickAboutUs(View view){
+        Drawer.redirectActivity(this, AboutUs.class);
+    }
+
+    public void ClickUserProfile(View view){
+        Drawer.redirectActivity(this, ProfileActivity.class);
+    }
+
+    public void ClickLogout(View view){
+        editor.clear();
+        editor.commit();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Drawer.closeDrawer(drawerLayout);
     }
 }

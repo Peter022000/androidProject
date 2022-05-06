@@ -19,8 +19,9 @@ public class Drawer extends AppCompatActivity {
     //Initialize variable
     DrawerLayout drawerLayout;
 
-    private int uid;
-    private int userMoney;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,40 +31,12 @@ public class Drawer extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_drawer);
 
-        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        boolean firstStart = prefs.getBoolean("firstStart", true);
-
-        if (firstStart) {
-            loadData();
-        }
-
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            uid = extras.getInt("uid");
-            userMoney = extras.getInt("userMoney");
-        }
+        preferences = getSharedPreferences("UserCredentials", MODE_PRIVATE);
+        editor = preferences.edit();
 
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
     }
-
-    private void loadData() {
-        MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(Drawer.this);
-        myDatabaseHelper.addItem("item1", "d1", 5,3);
-        myDatabaseHelper.addItem("item2", "d2", 5,3);
-        myDatabaseHelper.addItem("item3", "d3", 5,3);
-
-        myDatabaseHelper.addItemToShop(0,3,6);
-        myDatabaseHelper.addItemToShop(1,1,15);
-        myDatabaseHelper.addItemToShop(2,2,30);
-
-        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("firstStart", false);
-        editor.apply();
-    }
-
 
     public void ClickMenu(View view){
         //Open drawer
@@ -91,31 +64,37 @@ public class Drawer extends AppCompatActivity {
     }
 
     public void ClickHome(View view){
-        redirectActivity(this, Drawer.class, this.uid, this.userMoney);
-        //recreate();
+        //redirectActivity(this, Drawer.class);
+        recreate();
     }
 
     public void ClickEquipment(View view){
-        redirectActivity(this, Equipment.class, this.uid, this.userMoney);
+        redirectActivity(this, Equipment.class);
     }
 
     public void ClickShop(View view){
-        redirectActivity(this, Shop.class, this.uid, this.userMoney);
+        redirectActivity(this, Shop.class);
     }
 
     public void ClickAboutUs(View view){
-        redirectActivity(this, AboutUs.class, this.uid, this.userMoney);
+        redirectActivity(this, AboutUs.class);
     }
 
+    public void ClickUserProfile(View view){
+        redirectActivity(this, ProfileActivity.class);
+    }
+
+
     public void ClickLogout(View view){
+        editor.clear();
+        editor.commit();
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public static void redirectActivity(Activity activity, Class aClass, int uid, int userMoney) {
+    public static void redirectActivity(Activity activity, Class aClass) {
         Intent intent = new Intent(activity,aClass);
-        intent.putExtra("uid", uid);
-        intent.putExtra("userMoney", userMoney);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         activity.startActivity(intent);
     }

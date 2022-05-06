@@ -1,6 +1,7 @@
 package com.example.androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -40,6 +41,12 @@ public class ProfileActivity extends AppCompatActivity {
     Button changeEmailButton;
     Button changePasswordButton;
 //    ArrayList<String> login, email, password, security_question, security_answer, profile_image_url, money;
+
+    //----------------------------------------------------------------------------------------------
+    DrawerLayout drawerLayout;
+    private int uid;
+    private int userMoney;
+    //----------------------------------------------------------------------------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +115,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 editor.clear();
                 editor.commit();
+
                 Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -151,6 +159,10 @@ public class ProfileActivity extends AppCompatActivity {
                 gotoProfileSecurity();
             }
         });
+
+        //------------------------------------------------------------------------------------------
+
+        drawerLayout = findViewById(R.id.drawer_layout);
 
     }
 
@@ -205,5 +217,53 @@ public class ProfileActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //----------------------------------------------------------------------------------------------
 
+    public  void ClickMenu(View view) {
+        Drawer.openDrawer(drawerLayout);
+    }
+
+    public  void ClickLogo(View view){
+        Drawer.closeDrawer(drawerLayout);
+    }
+
+    public void ClickHome(View view) {
+        Drawer.redirectActivity(this, Drawer.class);
+    }
+
+    public void ClickEquipment(View view){
+        Drawer.redirectActivity(this,Equipment.class);
+    }
+
+    public void ClickShop(View view){
+        Drawer.redirectActivity(this, Shop.class);
+    }
+
+
+    public void ClickAboutUs(View view){
+        Drawer.redirectActivity(this, AboutUs.class);
+    }
+
+    public void ClickUserProfile(View view){
+        //Drawer.redirectActivity(this, ProfileActivity.class);
+        recreate();
+    }
+
+    public void ClickLogout(View view){
+        editor.clear();
+        editor.commit();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Drawer.closeDrawer(drawerLayout);
+    }
+
+    @Override
+    public void onBackPressed() {
+    }
 }

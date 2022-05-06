@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -28,11 +29,14 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
 
     private TextView shopName;
 
-    MyDatabaseHelper myDatabaseHelper;
+    DatabaseHelper DatabaseHelper;
 
     ArrayList<Item> items;
     ShopAdapter shopAdapter;
     RecyclerView recyclerView;
+
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,16 +46,21 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         getSupportActionBar().hide();
         setContentView(R.layout.activity_shop);
 
+        preferences = getSharedPreferences("UserCredentials", MODE_PRIVATE);
+        editor = preferences.edit();
+
+        uid = preferences.getInt("UID_KEY",-1);
+        userMoney = preferences.getInt("MONEY_KEY",-1);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            uid = extras.getInt("uid");
-            userMoney = extras.getInt("userMoney");
             sid = extras.getInt("sid");
         }
 
+
         shopName = findViewById(R.id.shopName);
 
-        myDatabaseHelper = new MyDatabaseHelper(Shop.this);
+        DatabaseHelper = new DatabaseHelper(Shop.this);
         items = new ArrayList<Item>();
 
         recyclerView = findViewById(R.id.recyclerViewShop);
@@ -94,23 +103,31 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     }
 
     public void ClickHome(View view) {
-        Drawer.redirectActivity(this, Drawer.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this, Drawer.class);
     }
 
     public void ClickEquipment(View view){
-        Drawer.redirectActivity(this, Equipment.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this, Equipment.class);
     }
 
     public void ClickShop(View view){
-        Drawer.redirectActivity(this, Shop.class, this.uid, this.userMoney);
+        //Drawer.redirectActivity(this, Shop.class);
+        recreate();
     }
 
 
     public void ClickAboutUs(View view){
-        Drawer.redirectActivity(this,AboutUs.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this,AboutUs.class);
+    }
+
+    public void ClickUserProfile(View view){
+        Drawer.redirectActivity(this, ProfileActivity.class);
     }
 
     public void ClickLogout(View view){
+        editor.clear();
+        editor.commit();
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -147,7 +164,7 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     }
 
     void storeItems() {
-        Cursor cursor = myDatabaseHelper.readDataShop(sid);
+        Cursor cursor = DatabaseHelper.readDataShop(sid);
 
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "No items", Toast.LENGTH_SHORT).show();

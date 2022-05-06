@@ -1,6 +1,7 @@
 package com.example.androidproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,13 +20,17 @@ import java.util.ArrayList;
 public class Equipment extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
-    MyDatabaseHelper myDatabaseHelper;
+    DatabaseHelper DatabaseHelper;
 
     ArrayList<Item> items;
     EquipmentAdapter equipmentAdapter;
     RecyclerView recyclerView;
     private int uid;
     private int userMoney;
+
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,31 +40,14 @@ public class Equipment extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_equipment);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            uid = extras.getInt("uid");
-            userMoney = extras.getInt("userMoney");
-        }
+        preferences = getSharedPreferences("UserCredentials", MODE_PRIVATE);
+        editor = preferences.edit();
 
-        myDatabaseHelper = new MyDatabaseHelper(Equipment.this);
+        uid = preferences.getInt("UID_KEY",-1);
+        userMoney = preferences.getInt("MONEY_KEY",-1);
+
+        DatabaseHelper = new DatabaseHelper(Equipment.this);
         items = new ArrayList<Item>();
-
-//        myDatabaseHelper.addItem("item1", "d1", 5,3);
-//        myDatabaseHelper.addItem("item2", "d2", 5,3);
-//        myDatabaseHelper.addItem("item3", "d3", 5,3);
-
-//        myDatabaseHelper.addItemToShop(0,3,6);
-
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,1);
-//        myDatabaseHelper.addItemToEquipment(1,3);
-//        myDatabaseHelper.addItemToEquipment(1,3);
-//        myDatabaseHelper.addItemToEquipment(1,3);
 
         recyclerView = findViewById(R.id.recyclerViewEquipment);
 
@@ -81,23 +69,31 @@ public class Equipment extends AppCompatActivity {
     }
 
     public void ClickHome(View view) {
-        Drawer.redirectActivity(this, Drawer.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this, Drawer.class);
     }
 
     public void ClickEquipment(View view) {
-        Drawer.redirectActivity(this, Equipment.class, this.uid, this.userMoney);
+        //Drawer.redirectActivity(this, Equipment.class);
+        recreate();
+    }
+
+    public void ClickUserProfile(View view){
+        Drawer.redirectActivity(this, ProfileActivity.class);
     }
 
     public void ClickShop(View view) {
-        Drawer.redirectActivity(this, Shop.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this, Shop.class);
     }
 
 
     public void ClickAboutUs(View view) {
-        Drawer.redirectActivity(this, AboutUs.class, this.uid, this.userMoney);
+        Drawer.redirectActivity(this, AboutUs.class);
     }
 
     public void ClickLogout(View view) {
+        editor.clear();
+        editor.commit();
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -109,7 +105,7 @@ public class Equipment extends AppCompatActivity {
     }
 
     void storeItems() {
-        Cursor cursor = myDatabaseHelper.readDataEquipment(uid);
+        Cursor cursor = DatabaseHelper.readDataEquipment(uid);
 
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "No items", Toast.LENGTH_SHORT).show();
