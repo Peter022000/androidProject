@@ -21,7 +21,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:text="TextView" />
+                android:text="TextView"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/item_value"
@@ -29,8 +31,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-
-                android:text="TextView" />
+                android:text="TextView"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/item_amount"
@@ -38,7 +41,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:text="TextView" />
+                android:text="TextView"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

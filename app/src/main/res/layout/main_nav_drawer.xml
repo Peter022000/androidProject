@@ -2,30 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/bg9"
+    >
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_margin="16dp"
         android:onClick="ClickLogo"
-        android:src="@drawable/ac_logo"/>
+        android:src="@drawable/logo3" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="DnD"
-        android:textSize="20sp"
+        android:text="Virtual Merchant"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:textColor="#636363"/>
+        android:textColor="@color/black"
+        android:background="?attr/editTextBackground"
+        android:backgroundTint="@color/black"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        style="@style/LogoLabelStyle"
+        />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="#636363" />
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:background="@color/white" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,21 +40,38 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:onClick="ClickHome">
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_castle"
+            android:layout_marginStart="20sp"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Home"
-            android:padding="12dp"
-            android:layout_marginStart="16dp"/>
+            style="@style/DrawerItemStyle"/>
+    </LinearLayout>
 
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="48dp"-->
-<!--            android:src=""/>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickUserProfile">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_knight"
+            android:layout_marginStart="20sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Profile"
+            style="@style/DrawerItemStyle"/>
     </LinearLayout>
 
     <LinearLayout
@@ -57,19 +81,19 @@
         android:gravity="center_vertical"
         android:onClick="ClickEquipment">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_backback"
+            android:layout_marginStart="20sp"/>
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Equipment"
-            android:padding="12dp"
-            android:layout_marginStart="16dp"/>
+            style="@style/DrawerItemStyle"/>
 
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="48dp"-->
-<!--            android:src=""/>-->
     </LinearLayout>
 
     <LinearLayout
@@ -79,19 +103,19 @@
         android:gravity="center_vertical"
         android:onClick="ClickShop">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_store"
+            android:layout_marginStart="20sp"/>
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Shops"
-            android:padding="12dp"
-            android:layout_marginStart="16dp"/>
+            style="@style/DrawerItemStyle"/>
 
-        <!--        <ImageView-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginEnd="48dp"-->
-        <!--            android:src=""/>-->
     </LinearLayout>
 
 
@@ -102,41 +126,19 @@
         android:gravity="center_vertical"
         android:onClick="ClickAboutUs">
 
-        <TextView
-            android:layout_width="0dp"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="abous us"
-            android:padding="12dp"
-            android:layout_marginStart="16dp"/>
-
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="48dp"-->
-<!--            android:src=""/>-->
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:onClick="ClickUserProfile">
+            android:src="@drawable/icon_info"
+            android:layout_marginStart="20sp"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="User profile"
-            android:padding="12dp"
-            android:layout_marginStart="16dp"/>
+            android:text="About us"
+            style="@style/DrawerItemStyle"/>
 
-        <!--        <ImageView-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginEnd="48dp"-->
-        <!--            android:src=""/>-->
     </LinearLayout>
 
 
@@ -147,19 +149,19 @@
         android:gravity="center_vertical"
         android:onClick="ClickLogout">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_logout"
+            android:layout_marginStart="20sp"/>
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Logout"
-            android:padding="12dp"
-            android:layout_marginStart="16dp"/>
+            style="@style/DrawerItemStyle"/>
 
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="48dp"-->
-<!--            android:src=""/>-->
     </LinearLayout>
 
 </LinearLayout>

@@ -16,6 +16,8 @@
     <color name="third_red">#A82125</color>
     <color name="black_main">#323739</color>
     <color name="bg_opacity">#99000000</color>
+    <color name="bg_opacity1">#C1000000</color>
     <color name="bg_opacity2">#57000000</color>
     <color name="bg_opacity3">#57FFFFFF</color>
+    <color name="bg_opacity4">#1DFFFFFF</color>
 </resources>

@@ -27,20 +27,32 @@
         <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/layout/shop_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/menu/popup_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Dokumenty/PWSZ/Semestr 4/Mobilne/AndroidProject/app/src/main/res/menu/sub_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/activity_about_us.xml" value="0.28489583333333335" />
         <entry key="..\:/androidProject/app/src/main/res/layout/activity_avatar_chooser.xml" value="0.33" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/activity_drawer.xml" value="0.28489583333333335" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/activity_equipment.xml" value="0.28489583333333335" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/activity_equipment_item_preview.xml" value="0.28489583333333335" />
         <entry key="..\:/androidProject/app/src/main/res/layout/activity_forgot_password.xml" value="0.33" />
         <entry key="..\:/androidProject/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/androidProject/app/src/main/res/layout/activity_profile.xml" value="0.33" />
         <entry key="..\:/androidProject/app/src/main/res/layout/activity_profile_security.xml" value="0.33" />
         <entry key="..\:/androidProject/app/src/main/res/layout/activity_reset_password.xml" value="0.33" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/activity_shop.xml" value="0.28489583333333335" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/activity_shop_item_preview.xml" value="0.33" />
         <entry key="..\:/androidProject/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="..\:/androidProject/app/src/main/res/layout/activity_splash.xml" value="0.33" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/equipment_item.xml" value="0.33" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/main_nav_drawer.xml" value="0.28489583333333335" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/main_toolbar.xml" value="0.28489583333333335" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/main_toolbar_for_shop.xml" value="0.28489583333333335" />
+        <entry key="..\:/androidProject/app/src/main/res/layout/shop_item.xml" value="0.28489583333333335" />
         <entry key="..\:/androidProject/app/src/main/res/layout/spinner_list.xml" value="0.2484375" />
+        <entry key="..\:/androidProject/app/src/main/res/menu/popup_menu.xml" value="0.28489583333333335" />
         <entry key="..\:/androidProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

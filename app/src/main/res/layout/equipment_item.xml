@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/bg4"
     >
 
     <androidx.cardview.widget.CardView
@@ -13,7 +14,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:id="@+id/linearLayoutEquipmentItem">
+            android:id="@+id/linearLayoutEquipmentItem"
+            android:background="@color/bg_opacity"
+            >
 
             <TextView
                 android:id="@+id/item_name"
@@ -21,7 +24,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:text="TextView" />
+                android:text="TextView"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/item_value"
@@ -29,8 +34,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-
-                android:text="TextView" />
+                android:text="TextView"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/item_amount"
@@ -38,7 +44,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:text="TextView" />
+                android:text="TextView"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
