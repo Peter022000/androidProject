@@ -18,6 +18,7 @@
             android:background="@color/bg_opacity"
             >
 
+
             <TextView
                 android:id="@+id/item_name"
                 android:layout_width="wrap_content"

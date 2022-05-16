@@ -19,18 +19,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/black"
+        android:gravity="center"
+        android:padding="5sp"
+        >
 
         <TextView
             android:id="@+id/shopName"
             android:layout_width="333sp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
             android:gravity="center_vertical|center"
-            android:text="Shop name"
-            android:background="?attr/editTextBackground"
+            android:text="Shop type"
             android:backgroundTint="@color/white"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -40,10 +40,117 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:onClick="showPopup"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="10dp"
             android:src="@drawable/icon_list3"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_opacity4"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5sp">
+
+            <ImageView
+                android:id="@+id/icon1"
+                style="@style/IconStyle"
+                app:srcCompat="@drawable/icon_sword" />
+
+            <ImageView
+                android:id="@+id/icon3"
+                style="@style/IconStyle"
+                app:srcCompat="@drawable/icon_coins" />
+
+            <ImageView
+                android:id="@+id/icon4"
+                style="@style/IconStyle"
+                app:srcCompat="@drawable/icon_arrow" />
+
+            <ImageView
+                android:id="@+id/icon5"
+                style="@style/IconStyle"
+                app:srcCompat="@drawable/icon_weight" />
+
+            <ImageView
+                android:id="@+id/icon7"
+                style="@style/IconStyle"
+                app:srcCompat="@drawable/icon_arrow_down" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayoutShopItem">
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5sp"
+                android:textAlignment="center"
+                android:text="Type"
+                android:textSize="18sp"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/item_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5sp"
+                android:textAlignment="center"
+                android:text="Cost"
+                android:textSize="18sp"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/item_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5sp"
+                android:textAlignment="center"
+                android:text="Amount"
+                android:textSize="18sp"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/item_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5sp"
+                android:textAlignment="center"
+                android:text="Weight"
+                android:textSize="18sp"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/sortOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5sp"
+                android:textAlignment="center"
+                android:text="Sort type"
+                android:textSize="18sp"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
     </LinearLayout>
 
 
