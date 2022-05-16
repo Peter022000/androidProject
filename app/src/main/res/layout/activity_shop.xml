@@ -138,18 +138,6 @@
                 android:background="@color/bg_opacity1"
                 android:textColor="@color/white" />
 
-            <TextView
-                android:id="@+id/sortOption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="5sp"
-                android:textAlignment="center"
-                android:text="Sort type"
-                android:textSize="18sp"
-                android:background="@color/bg_opacity1"
-                android:textColor="@color/white" />
-
         </LinearLayout>
     </LinearLayout>
 
