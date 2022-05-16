@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/black"
+        android:background="@color/bg_opacity1"
         android:gravity="center"
         android:padding="5sp"
         >
