@@ -45,17 +45,11 @@ public class Item {
         return amount;
     }
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", value=" + value +
-                ", weight=" + weight +
-                ", amount=" + amount +
-                ", typeId=" + typeId +
-                ", typeName='" + typeName + '\'' +
-                '}';
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public String getTypeName() {
+        return typeName;
     }
 }

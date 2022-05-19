@@ -100,7 +100,10 @@ public class ShopItemPreview extends AppCompatActivity {
             DatabaseHelper.updateMoney(this.uid, this.userMoney);
             //myDatabaseHelper.changeUserMoney
             if(this.amount == 0) {
-                Drawer.redirectActivity(this, Shop.class);
+                Intent intent = new Intent(this,Shop.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("sid", sid);
+                startActivity(intent);
             }
             Toast.makeText(this, this.name+" has been purchased", Toast.LENGTH_SHORT).show();
         }
@@ -111,8 +114,8 @@ public class ShopItemPreview extends AppCompatActivity {
     }
 
     public void goBackToShop(View view) {
-        //Drawer.redirectActivity(this, Shop.class, this.uid, this.userMoney);
         Intent intent = new Intent(this,Shop.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("sid", sid);
         startActivity(intent);
     }

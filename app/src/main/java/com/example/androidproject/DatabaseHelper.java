@@ -542,11 +542,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         wdb.update(TABLE_NAME3, cv,COLUMN_SID + " = ? AND " + COLUMN_IID + " = ?" , new String[]{String.valueOf(sid), String.valueOf(iid)});
     }
 
-    Cursor readDataEquipment(int uid){
-        String query = "SELECT it.*, ty.type_name, sh.amount FROM " + TABLE_NAME2 + " AS eq " +
+    Cursor readDataEquipment(int uid, String sortOrder, int sortT){
+        String sortType;
+        if(sortT == 0){
+            sortType = "ASC";
+        } else {
+            sortType = "DESC";
+        }
+
+        String query = "SELECT it.*, ty.type_name, eq.amount FROM " + TABLE_NAME2 + " AS eq " +
                 " JOIN " + TABLE_NAME1+ " AS it ON eq.iid = it.iid "+
                 " JOIN " + TABLE_NAME4+ " AS ty ON it.tid = ty.tid "+
-                " WHERE eq.uid = " + uid + " AND eq.amount > 0 ";
+                " WHERE eq.uid = " + uid + " AND eq.amount > 0 "+
+                " ORDER BY " + sortOrder + " " + sortType;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -559,19 +567,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    Cursor readDataShop(int sid, String sortType, int sortO){
-        String sortOrder;
-        if(sortO == 0){
-            sortOrder = "ASC";
+    Cursor readDataShop(int sid, String sortOrder, int sortT){
+        String sortType;
+        if(sortT == 0){
+            sortType = "ASC";
         } else {
-            sortOrder = "DESC";
+            sortType = "DESC";
         }
 
         String query = "SELECT it.*, ty.type_name, sh.amount FROM " + TABLE_NAME3 + " AS sh " +
                 " JOIN " + TABLE_NAME1+ " AS it ON sh.iid = it.iid "+
                 " JOIN " + TABLE_NAME4+ " AS ty ON it.tid = ty.tid "+
                 " WHERE sh.sid = " + sid + " AND sh.amount > 0 "+
-                " ORDER BY " + sortType + " " + sortOrder;
+                " ORDER BY " + sortOrder + " " + sortType;
 
         SQLiteDatabase db = this.getReadableDatabase();
 

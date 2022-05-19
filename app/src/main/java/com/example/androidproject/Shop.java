@@ -42,8 +42,8 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
 
     private ImageView sortOrderClick;
 
-    private int selectedSortOrder;
-    private String sortType;
+    private int selectedSortType;
+    private String selectedSortOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,8 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         setContentView(R.layout.activity_shop);
 
         sortOrderClick = findViewById(R.id.sortOrderIcon);
-        selectedSortOrder = 0;
+        selectedSortType = 0;
+        selectedSortOrder = "name";
         sortOrderClick.setBackgroundResource(R.drawable.icon_arrow_up);
 
         preferences = getSharedPreferences("UserCredentials", MODE_PRIVATE);
@@ -84,15 +85,13 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     private void setRecyclerView()
     {
         this.items.clear();
-        storeItems("name", 0);
+        storeItems(selectedSortOrder, selectedSortType);
         shopAdapter = new ShopAdapter(Shop.this, items);
         recyclerView.setAdapter(shopAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(Shop.this));
         shopAdapter.setUid(this.uid);
         shopAdapter.setSid(this.sid);
         shopAdapter.setUserMoney(this.userMoney);
-
-        setShopName();
     }
 
     private void setShopName(){
@@ -156,18 +155,22 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
             case R.id.shop1:
                 this.sid = 0;
                 setRecyclerView();
+                setShopName();
                 return true;
             case R.id.shop2:
                 this.sid = 1;
                 setRecyclerView();
+                setShopName();
                 return true;
             case R.id.shop3:
                 this.sid = 2;
                 setRecyclerView();
+                setShopName();
                 return true;
             case R.id.shop4:
                 this.sid = 3;
                 setRecyclerView();
+                setShopName();
                 return true;
             default:
                 return false;
@@ -186,29 +189,39 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
                         cursor.getString(6),cursor.getInt(7)));
             }
         }
-
-        Log.d("aaaaaaaaaaaaaaaaa", String.valueOf(items));
     }
 
-    public void sortOrder(View view) {
-        if(selectedSortOrder == 0){
-            selectedSortOrder = 1;
+
+    public void sortType(View view) {
+        if(selectedSortType == 0){
+            selectedSortType = 1;
             sortOrderClick.setBackgroundResource(R.drawable.icon_arrow_down);
+            setRecyclerView();
         } else {
-            selectedSortOrder = 0;
+            selectedSortType = 0;
             sortOrderClick.setBackgroundResource(R.drawable.icon_arrow_up);
+            setRecyclerView();
         }
     }
 
     public void sortByValue(View view) {
-        this.items.clear();
-        storeItems("value", selectedSortOrder);
-        shopAdapter = new ShopAdapter(Shop.this, items);
-        recyclerView.setAdapter(shopAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(Shop.this));
-        shopAdapter.setUid(this.uid);
-        shopAdapter.setSid(this.sid);
-        shopAdapter.setUserMoney(this.userMoney);
+        selectedSortOrder = "value";
+        setRecyclerView();
+    }
+
+    public void sortByAmount(View view) {
+        selectedSortOrder = "amount";
+        setRecyclerView();
+    }
+
+    public void sortByName(View view) {
+        selectedSortOrder = "name";
+        setRecyclerView();
+    }
+
+    public void sortByType(View view) {
+        selectedSortOrder = "type_name";
+        setRecyclerView();
     }
 
     @Override
@@ -220,4 +233,5 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     @Override
     public void onBackPressed() {
     }
+
 }
