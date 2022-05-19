@@ -112,7 +112,8 @@ public class Equipment extends AppCompatActivity {
         } else {
             while (cursor.moveToNext()) {
                 items.add(new Item(cursor.getInt(0), cursor.getString(1), cursor.getString(2),
-                        cursor.getInt(3), cursor.getInt(4), cursor.getInt(5)));
+                        cursor.getInt(3), cursor.getInt(4), cursor.getInt(5),
+                        cursor.getString(6),cursor.getInt(7)));
             }
         }
     }

@@ -60,13 +60,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadData() {
         DatabaseHelper DatabaseHelper = new DatabaseHelper(MainActivity.this);
-        DatabaseHelper.addItem("item1", "d1", 5,3);
-        DatabaseHelper.addItem("item2", "d2", 5,3);
-        DatabaseHelper.addItem("item3", "d3", 5,3);
 
-        DatabaseHelper.addItemToShop(0,3,6);
+        DatabaseHelper.addType("Armor");
+        DatabaseHelper.addType("Weapon");
+
+        DatabaseHelper.addItem("item1", 1, "d1", 2,3);
+        DatabaseHelper.addItem("item2", 2,"d2", 5,3);
+        DatabaseHelper.addItem("item3", 1,"d3", 3,3);
+
+        DatabaseHelper.addItemToShop(1,3,6);
         DatabaseHelper.addItemToShop(1,1,15);
-        DatabaseHelper.addItemToShop(2,2,30);
+        DatabaseHelper.addItemToShop(1,2,30);
 
         SharedPreferences prefs = getSharedPreferences("prefsfirstStart", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();

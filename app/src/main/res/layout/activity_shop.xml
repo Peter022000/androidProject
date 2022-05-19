@@ -65,6 +65,7 @@
             <ImageView
                 android:id="@+id/icon3"
                 style="@style/IconStyle"
+                android:onClick="sortByValue"
                 app:srcCompat="@drawable/icon_coins" />
 
             <ImageView
@@ -78,9 +79,9 @@
                 app:srcCompat="@drawable/icon_weight" />
 
             <ImageView
-                android:id="@+id/icon7"
+                android:id="@+id/sortOrderIcon"
                 style="@style/IconStyle"
-                app:srcCompat="@drawable/icon_arrow_down" />
+                android:onClick="sortOrder" />
 
         </LinearLayout>
 
@@ -112,7 +113,8 @@
                 android:text="Cost"
                 android:textSize="18sp"
                 android:background="@color/bg_opacity1"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                />
 
             <TextView
                 android:id="@+id/item_amount"
