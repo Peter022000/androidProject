@@ -47,6 +47,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME3 = "shops";
     private static final String COLUMN_SID = "sid";
 
+    private static final String TABLE_NAME4 = "type";
+    private static final String COLUMN_TID = "tid";
+    private static final String COLUMN_TypeName = "type_name";
+
     //----------------------------------------------------------------------------------------------
 
 
@@ -79,7 +83,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         COLUMN_NAME + " TEXT, " +
                         COLUMN_DESCRIPTION + " TEXT, " +
                         COLUMN_VALUE + " INTEGER, " +
-                        COLUMN_WEIGHT + " INTEGER);";
+                        COLUMN_WEIGHT + " INTEGER," +
+                        COLUMN_TID + " INTEGER);";
+
+        String equipment =
+                "CREATE TABLE " + TABLE_NAME2 +
+                        "("+ COLUMN_UID + " INTEGER, " +
+                        COLUMN_IID + " INTEGER , " +
+                        COLUMN_AMOUNT + " INTEGER);";
 
         String shops =
                 "CREATE TABLE " + TABLE_NAME3 +
@@ -88,15 +99,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         COLUMN_AMOUNT + " INTEGER);";
 
 
-        String equipment =
-                "CREATE TABLE " + TABLE_NAME2 +
-                        "("+ COLUMN_UID + " INTEGER, " +
-                        COLUMN_IID + " INTEGER , " +
-                        COLUMN_AMOUNT + " INTEGER);";
+
+        String type =
+                "CREATE TABLE " + TABLE_NAME4 +
+                        "("+ COLUMN_TID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        COLUMN_TypeName + " TEXT);";
 
         db.execSQL(items);
         db.execSQL(shops);
         db.execSQL(equipment);
+        db.execSQL(type);
 
         //----------------------------------------------------------------------------------------------
     }
@@ -109,6 +121,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME2);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME3);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME4);
 
         //------------------------------------------------------------------------------------------
         onCreate(db);
@@ -414,11 +427,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //----------------------------------------------------------------------------------------------
 
-    void addItem(String name, String description, int value, int weight){
+    void addType(String typeName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_TypeName, typeName);
+
+
+        db.insert(TABLE_NAME4, null, cv);
+    }
+
+
+    void addItem(String name, int type, String description, int value, int weight){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_NAME, name);
+        cv.put(COLUMN_TID, type);
         cv.put(COLUMN_DESCRIPTION, description);
         cv.put(COLUMN_VALUE, value);
         cv.put(COLUMN_WEIGHT, weight);
@@ -517,10 +542,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         wdb.update(TABLE_NAME3, cv,COLUMN_SID + " = ? AND " + COLUMN_IID + " = ?" , new String[]{String.valueOf(sid), String.valueOf(iid)});
     }
 
-    Cursor readDataEquipment(int uid){
-        String query = "SELECT it.*, eq.amount FROM " + TABLE_NAME2 + " AS eq " +
+    Cursor readDataEquipment(int uid, String sortOrder, int sortT){
+        String sortType;
+        if(sortT == 0){
+            sortType = "ASC";
+        } else {
+            sortType = "DESC";
+        }
+
+        String query = "SELECT it.*, ty.type_name, eq.amount FROM " + TABLE_NAME2 + " AS eq " +
                 " JOIN " + TABLE_NAME1+ " AS it ON eq.iid = it.iid "+
-                " WHERE eq.uid = " + uid + " AND eq.amount > 0 ";
+                " JOIN " + TABLE_NAME4+ " AS ty ON it.tid = ty.tid "+
+                " WHERE eq.uid = " + uid + " AND eq.amount > 0 "+
+                " ORDER BY " + sortOrder + " " + sortType;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -533,10 +567,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    Cursor readDataShop(int sid){
-        String query = "SELECT it.*, sh.amount FROM " + TABLE_NAME3 + " AS sh " +
+    Cursor readDataShop(int sid, String sortOrder, int sortT){
+        String sortType;
+        if(sortT == 0){
+            sortType = "ASC";
+        } else {
+            sortType = "DESC";
+        }
+
+        String query = "SELECT it.*, ty.type_name, sh.amount FROM " + TABLE_NAME3 + " AS sh " +
                 " JOIN " + TABLE_NAME1+ " AS it ON sh.iid = it.iid "+
-                " WHERE sh.sid = " + sid + " AND sh.amount > 0 ";
+                " JOIN " + TABLE_NAME4+ " AS ty ON it.tid = ty.tid "+
+                " WHERE sh.sid = " + sid + " AND sh.amount > 0 "+
+                " ORDER BY " + sortOrder + " " + sortType;
 
         SQLiteDatabase db = this.getReadableDatabase();
 

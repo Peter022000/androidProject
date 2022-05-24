@@ -10,10 +10,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,11 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
+    private ImageView sortOrderClick;
+
+    private int selectedSortType;
+    private String selectedSortOrder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +52,11 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_shop);
+
+        sortOrderClick = findViewById(R.id.sortOrderIcon);
+        selectedSortType = 0;
+        selectedSortOrder = "name";
+        sortOrderClick.setBackgroundResource(R.drawable.icon_arrow_up);
 
         preferences = getSharedPreferences("UserCredentials", MODE_PRIVATE);
         editor = preferences.edit();
@@ -73,15 +85,13 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     private void setRecyclerView()
     {
         this.items.clear();
-        storeItems();
+        storeItems(selectedSortOrder, selectedSortType);
         shopAdapter = new ShopAdapter(Shop.this, items);
         recyclerView.setAdapter(shopAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(Shop.this));
         shopAdapter.setUid(this.uid);
         shopAdapter.setSid(this.sid);
         shopAdapter.setUserMoney(this.userMoney);
-
-        setShopName();
     }
 
     private void setShopName(){
@@ -94,11 +104,11 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         }
     }
 
-    public  void ClickMenu(View view) {
+    public void ClickMenu(View view) {
         Drawer.openDrawer(drawerLayout);
     }
 
-    public  void ClickLogo(View view){
+    public void ClickLogo(View view){
         Drawer.closeDrawer(drawerLayout);
     }
 
@@ -145,35 +155,73 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
             case R.id.shop1:
                 this.sid = 0;
                 setRecyclerView();
+                setShopName();
                 return true;
             case R.id.shop2:
                 this.sid = 1;
                 setRecyclerView();
+                setShopName();
                 return true;
             case R.id.shop3:
                 this.sid = 2;
                 setRecyclerView();
+                setShopName();
                 return true;
             case R.id.shop4:
                 this.sid = 3;
                 setRecyclerView();
+                setShopName();
                 return true;
             default:
                 return false;
         }
     }
 
-    void storeItems() {
-        Cursor cursor = DatabaseHelper.readDataShop(sid);
+    void storeItems(String orderBy, int sortType) {
+        Cursor cursor = DatabaseHelper.readDataShop(sid, orderBy, sortType);
 
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "No items", Toast.LENGTH_SHORT).show();
         } else {
             while (cursor.moveToNext()) {
                 items.add(new Item(cursor.getInt(0), cursor.getString(1), cursor.getString(2),
-                        cursor.getInt(3), cursor.getInt(4), cursor.getInt(5)));
+                        cursor.getInt(3), cursor.getInt(4), cursor.getInt(5),
+                        cursor.getString(6),cursor.getInt(7)));
             }
         }
+    }
+
+
+    public void sortType(View view) {
+        if(selectedSortType == 0){
+            selectedSortType = 1;
+            sortOrderClick.setBackgroundResource(R.drawable.icon_arrow_down);
+            setRecyclerView();
+        } else {
+            selectedSortType = 0;
+            sortOrderClick.setBackgroundResource(R.drawable.icon_arrow_up);
+            setRecyclerView();
+        }
+    }
+
+    public void sortByValue(View view) {
+        selectedSortOrder = "value";
+        setRecyclerView();
+    }
+
+    public void sortByAmount(View view) {
+        selectedSortOrder = "amount";
+        setRecyclerView();
+    }
+
+    public void sortByName(View view) {
+        selectedSortOrder = "name";
+        setRecyclerView();
+    }
+
+    public void sortByType(View view) {
+        selectedSortOrder = "type_name";
+        setRecyclerView();
     }
 
     @Override
@@ -185,4 +233,5 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     @Override
     public void onBackPressed() {
     }
+
 }

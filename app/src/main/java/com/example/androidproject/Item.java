@@ -7,14 +7,18 @@ public class Item {
     private int value;
     private int weight;
     private int amount;
+    private int typeId;
+    private String typeName;
 
-    public Item(int id, String name, String description, int value, int weight, int amount) {
+    public Item(int id, String name, String description, int value, int weight, int typeId, String typeName, int amount) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.value = value;
         this.weight = weight;
         this.amount = amount;
+        this.typeId = typeId;
+        this.typeName = typeName;
     }
 
     public int getId() {
@@ -39,5 +43,13 @@ public class Item {
 
     public int getAmount() {
         return amount;
+    }
+
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public String getTypeName() {
+        return typeName;
     }
 }

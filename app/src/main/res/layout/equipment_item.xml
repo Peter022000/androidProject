@@ -13,32 +13,56 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:id="@+id/linearLayoutEquipmentItem">
+            android:id="@+id/linearLayoutEquipmentItem"
+            android:background="@color/bg_opacity"
+            >
+
+
+            <TextView
+                android:id="@+id/item_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5sp"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:padding="5sp"
                 android:textAlignment="center"
-                android:text="TextView" />
+                android:textSize="18sp"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white" />
+
 
             <TextView
                 android:id="@+id/item_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:padding="5sp"
                 android:textAlignment="center"
-
-                android:text="TextView" />
+                android:textSize="18sp"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white"
+                />
 
             <TextView
                 android:id="@+id/item_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:padding="5sp"
                 android:textAlignment="center"
-                android:text="TextView" />
+                android:textSize="18sp"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

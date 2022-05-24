@@ -5,12 +5,124 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".Equipment">
+    tools:context=".Equipment"
+    android:background="@drawable/bg4">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/bg_opacity1"
+            android:gravity="center"
+            android:padding="5sp"
+            >
+
+            <TextView
+                android:id="@+id/shopName"
+                android:layout_width="333sp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center"
+                android:text="Equipment"
+                android:backgroundTint="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_opacity4"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5sp">
+
+            <ImageView
+                style="@style/IconStyle"
+                android:onClick="sortByType"
+                app:srcCompat="@drawable/icon_sword" />
+
+            <ImageView
+                style="@style/IconStyle"
+                android:onClick="sortByName"
+                app:srcCompat="@drawable/icon_weight" />
+
+            <ImageView
+                style="@style/IconStyle"
+                android:onClick="sortByValue"
+                app:srcCompat="@drawable/icon_coins" />
+
+
+            <ImageView
+                style="@style/IconStyle"
+                android:onClick="sortByAmount"
+                app:srcCompat="@drawable/icon_arrow" />
+
+            <ImageView
+                android:id="@+id/sortOrderIcon"
+                style="@style/IconStyle"
+                android:onClick="sortType" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayoutShopItem">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5sp"
+                android:textAlignment="center"
+                android:text="Type"
+                android:textSize="18sp"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5sp"
+                android:textAlignment="center"
+                android:text="Name"
+                android:textSize="18sp"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5sp"
+                android:textAlignment="center"
+                android:text="Cost"
+                android:textSize="18sp"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5sp"
+                android:textAlignment="center"
+                android:text="Amount"
+                android:textSize="18sp"
+                android:background="@color/bg_opacity1"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
 
 <!--        <include-->
 <!--            layout="@layout/main_toolbar"/>-->
@@ -39,8 +151,7 @@
         android:layout_gravity="start"
         android:background="@color/white">
 
-        <include
-            layout="@layout/main_nav_drawer"/>
+        <include layout="@layout/main_nav_drawer" />
 
     </RelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

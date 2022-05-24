@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".ShopItemPreview">
+    tools:context=".ShopItemPreview"
+    android:background="@drawable/bg4">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +26,10 @@
             android:height="100dp"
             android:gravity="center_vertical|center"
             android:text="Item preview"
-            android:textSize="40dp" />
+            android:background="?attr/editTextBackground"
+            android:backgroundTint="@color/white"
+            android:textSize="30sp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <LinearLayout
@@ -39,7 +43,8 @@
             android:height="50dp"
             android:gravity="center_vertical|center"
             android:text="Name"
-            android:textSize="20dp" />
+            style="@style/DrawerItemLabel"/>
+
 
         <TextView
             android:id="@+id/item_name"
@@ -48,7 +53,8 @@
             android:layout_weight="1"
             android:height="50dp"
             android:gravity="center_vertical|center"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <LinearLayout
@@ -62,16 +68,17 @@
             android:height="50dp"
             android:gravity="center_vertical|center"
             android:text="Description"
-            android:textSize="20dp" />
+            style="@style/DrawerItemLabel" />
 
         <TextView
             android:id="@+id/item_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:height="70dp"
+            android:height="50dp"
             android:gravity="center_vertical|center"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <LinearLayout
@@ -85,7 +92,7 @@
             android:height="50dp"
             android:gravity="center_vertical|center"
             android:text="Value"
-            android:textSize="20dp" />
+            style="@style/DrawerItemLabel"/>
 
         <TextView
             android:id="@+id/item_value"
@@ -94,7 +101,8 @@
             android:layout_weight="1"
             android:height="50dp"
             android:gravity="center_vertical|center"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <LinearLayout
@@ -108,7 +116,7 @@
             android:height="50dp"
             android:gravity="center_vertical|center"
             android:text="Weight"
-            android:textSize="20dp" />
+            style="@style/DrawerItemLabel"/>
 
         <TextView
             android:id="@+id/item_weight"
@@ -117,7 +125,8 @@
             android:layout_weight="1"
             android:height="50dp"
             android:gravity="center_vertical|center"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <LinearLayout
@@ -131,7 +140,7 @@
             android:height="50dp"
             android:gravity="center_vertical|center"
             android:text="Amount"
-            android:textSize="20dp" />
+            style="@style/DrawerItemLabel" />
 
         <TextView
             android:id="@+id/item_amount"
@@ -154,7 +163,7 @@
             android:height="50dp"
             android:gravity="center_vertical|center"
             android:text="Your money"
-            android:textSize="20dp" />
+            style="@style/DrawerItemLabel" />
 
         <TextView
             android:id="@+id/money"
@@ -163,7 +172,8 @@
             android:layout_weight="1"
             android:height="50dp"
             android:gravity="center_vertical|center"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="@color/white" />
     </LinearLayout>
 
 
@@ -177,14 +187,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Buy item"
-            android:onClick="buyItem">
+            android:onClick="buyItem"
+            style="@style/MainButtonStyle">
         </Button>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Go back to shop"
-            android:onClick="goBackToShop">
+            android:onClick="goBackToShop"
+            style="@style/MainButtonStyle">
         </Button>
 
     </LinearLayout>
@@ -196,8 +208,7 @@
         android:layout_gravity="start"
         android:background="@color/white">
 
-        <include
-            layout="@layout/main_nav_drawer"/>
+        <include layout="@layout/main_nav_drawer" />
 
     </RelativeLayout>
 

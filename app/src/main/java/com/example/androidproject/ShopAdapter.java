@@ -55,6 +55,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.item_name.setText(String.valueOf(items.get(position).getName()));
+        holder.item_type.setText(String.valueOf(items.get(position).getTypeName()));
         holder.item_value.setText(String.valueOf(items.get(position).getValue()));
         holder.item_amount.setText(String.valueOf(items.get(position).getAmount()));
         holder.linearLayoutShopItem.setOnClickListener(new View.OnClickListener() {
@@ -82,11 +83,12 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView item_name, item_value, item_amount;
+        TextView item_type, item_name, item_value, item_amount;
         LinearLayout linearLayoutShopItem;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            item_type = itemView.findViewById(R.id.item_type);
             item_name = itemView.findViewById(R.id.item_name);
             item_value = itemView.findViewById(R.id.item_value);
             item_amount = itemView.findViewById(R.id.item_amount);
