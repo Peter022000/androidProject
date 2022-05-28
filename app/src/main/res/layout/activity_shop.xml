@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:onClick="showPopup"
-            android:src="@drawable/icon_list3"/>
+            android:src="@drawable/icon_list3" />
     </LinearLayout>
 
     <LinearLayout

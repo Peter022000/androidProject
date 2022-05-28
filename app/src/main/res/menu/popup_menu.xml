@@ -3,18 +3,18 @@
 
     <item
         android:id="@+id/shop1"
-        android:title="Shop 1" />
+        android:title="Arm`s Smith" />
 
     <item
         android:id="@+id/shop2"
-        android:title="Shop 2" />
+        android:title="Armorer" />
 
     <item
         android:id="@+id/shop3"
-        android:title="Shop 3" />
+        android:title="Enchanter" />
 
     <item
         android:id="@+id/shop4"
-        android:title="Shop 4" />
+        android:title="Jeweler" />
 
 </menu>

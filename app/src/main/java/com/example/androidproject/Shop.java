@@ -95,12 +95,14 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     }
 
     private void setShopName(){
-        if(sid == 0) {
-            shopName.setText("Shop 1");
-        } else if( sid == 1) {
-            shopName.setText("Shop 2");
+        if(sid == 1) {
+            shopName.setText("Arm`s smith");
         } else if( sid == 2) {
-            shopName.setText("Shop 3");
+            shopName.setText("Armorer");
+        } else if( sid == 3) {
+            shopName.setText("Enchanter");
+        } else if( sid == 4) {
+            shopName.setText("Jeweler");
         }
     }
 
@@ -153,22 +155,22 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.shop1:
-                this.sid = 0;
-                setRecyclerView();
-                setShopName();
-                return true;
-            case R.id.shop2:
                 this.sid = 1;
                 setRecyclerView();
                 setShopName();
                 return true;
-            case R.id.shop3:
+            case R.id.shop2:
                 this.sid = 2;
                 setRecyclerView();
                 setShopName();
                 return true;
-            case R.id.shop4:
+            case R.id.shop3:
                 this.sid = 3;
+                setRecyclerView();
+                setShopName();
+                return true;
+            case R.id.shop4:
+                this.sid = 4;
                 setRecyclerView();
                 setShopName();
                 return true;
