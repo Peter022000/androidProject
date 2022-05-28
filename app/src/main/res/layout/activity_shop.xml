@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:onClick="showPopup"
-            android:src="@drawable/icon_list3"/>
+            android:src="@drawable/icon_list3" />
     </LinearLayout>
 
     <LinearLayout
@@ -92,7 +92,7 @@
             android:id="@+id/linearLayoutShopItem">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5sp"
@@ -103,7 +103,7 @@
                 android:textColor="@color/white"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5sp"
@@ -115,7 +115,7 @@
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5sp"
@@ -127,7 +127,7 @@
                 />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5sp"
