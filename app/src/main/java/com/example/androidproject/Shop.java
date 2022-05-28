@@ -65,12 +65,13 @@ public class Shop extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         userMoney = preferences.getInt("MONEY_KEY",-1);
 
         Bundle extras = getIntent().getExtras();
+        sid = 1;
         if (extras != null) {
             sid = extras.getInt("sid");
         }
 
-
         shopName = findViewById(R.id.shopName);
+        setShopName();
 
         DatabaseHelper = new DatabaseHelper(Shop.this);
         items = new ArrayList<Item>();
