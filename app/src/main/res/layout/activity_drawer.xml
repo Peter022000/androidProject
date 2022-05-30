@@ -13,91 +13,84 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-20sp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5sp"></LinearLayout>
+
         <TextView
-            android:id="@+id/line"
-            android:layout_width="wrap_content"
+            android:id="@+id/line4"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="10sp"
+            android:layout_marginRight="20dp"
             android:background="?attr/editTextBackground"
             android:backgroundTint="@android:color/white"
             android:ems="14"
             android:fontFamily="@font/nunito_bold"
             android:inputType="textPersonName"
-            android:text="Home"
+            android:text="Dice roller"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="25sp" />
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/imageViewRoll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="5sp"
-            >
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="242dp"
-                android:layout_height="135dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.092"
-                app:srcCompat="@drawable/logo3" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="5sp"
-            android:layout_marginTop="-20sp"
-            >
-        </LinearLayout>
+            android:layout_height="266dp"
+            android:onClick="ClickDice"
+            android:layout_marginTop="100sp"
+            app:srcCompat="@drawable/d20_roll" />
 
 
         <!--        <include layout="@layout/main_toolbar"/>-->
 
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView"-->
-<!--            android:layout_width="242dp"-->
-<!--            android:layout_height="135dp"-->
-<!--            app:srcCompat="@drawable/logo3"-->
-<!--            android:layout_gravity="center"/>-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/imageView"-->
+        <!--            android:layout_width="242dp"-->
+        <!--            android:layout_height="135dp"-->
+        <!--            app:srcCompat="@drawable/logo3"-->
+        <!--            android:layout_gravity="center"/>-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/textView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="VirtualMerchant"-->
-<!--            style="@style/LogoLabelStyle"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="-10sp"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/textView"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="VirtualMerchant"-->
+        <!--            style="@style/LogoLabelStyle"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginTop="-10sp"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:layout_marginRight="20dp"-->
-<!--            android:background="?attr/editTextBackground"-->
-<!--            android:backgroundTint="@android:color/white"-->
-<!--            android:ems="14"-->
-<!--            android:fontFamily="@font/nunito_bold"-->
-<!--            android:inputType="textPersonName"-->
-<!--            android:text="Home"-->
-<!--            android:textAlignment="center"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="20sp"-->
-<!--            android:gravity="center"-->
-<!--            />-->
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginLeft="20dp"-->
+        <!--            android:layout_marginRight="20dp"-->
+        <!--            android:background="?attr/editTextBackground"-->
+        <!--            android:backgroundTint="@android:color/white"-->
+        <!--            android:ems="14"-->
+        <!--            android:fontFamily="@font/nunito_bold"-->
+        <!--            android:inputType="textPersonName"-->
+        <!--            android:text="Home"-->
+        <!--            android:textAlignment="center"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="20sp"-->
+        <!--            android:gravity="center"-->
+        <!--            />-->
 
     </LinearLayout>
 
