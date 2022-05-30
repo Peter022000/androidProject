@@ -6,6 +6,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -69,6 +70,7 @@ public class EquipmentItemPreview extends AppCompatActivity {
 
         item_name.setText(this.name);
         item_description.setText(this.description);
+        item_description.setMovementMethod(new ScrollingMovementMethod());
         item_value.setText(String.valueOf(this.value));
         item_weight.setText(String.valueOf(this.weight));
         item_amount.setText(String.valueOf(this.amount));

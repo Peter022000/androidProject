@@ -6,6 +6,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -74,6 +75,7 @@ public class ShopItemPreview extends AppCompatActivity {
 
         item_name.setText(this.name);
         item_description.setText(this.description);
+        item_description.setMovementMethod(new ScrollingMovementMethod());
         item_value.setText(String.valueOf(this.value));
         item_weight.setText(String.valueOf(this.weight));
         item_amount.setText(String.valueOf(this.amount));
@@ -98,7 +100,7 @@ public class ShopItemPreview extends AppCompatActivity {
             money.setText(String.valueOf(userMoney));
             DatabaseHelper.addItemToEquipment(this.uid,iid);
             DatabaseHelper.updateMoney(this.uid, this.userMoney);
-            //myDatabaseHelper.changeUserMoney
+
             if(this.amount == 0) {
                 Intent intent = new Intent(this,Shop.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
